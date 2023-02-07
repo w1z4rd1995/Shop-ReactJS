@@ -14,11 +14,10 @@ export class AppStore {
         const response = await axios.get(api_url);
         this.ApiData = response.data;
 
-        let storeCategories = {};
         const temp = this.ApiData.map((item) => item.category);
         this.storeCategories = [...new Set(temp)];
         // console.log(this.ApiData);
-        console.log(this.storeCategories);
+        // console.log(this.storeCategories);
     };
 }
 export const store = new AppStore();

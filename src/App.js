@@ -6,20 +6,16 @@ import { Main } from "./Pages/Main";
 import { observer } from "mobx-react-lite";
 import { useEffect, useState, useContext } from "react";
 import { StoreContext } from "./Stores/AppStore";
+import { Category } from "./Pages/Category";
 
 const App = observer(() => {
-    const store = useContext(StoreContext);
-
-    useEffect(() => {
-        store.fetchData();
-        console.log("зашел фетч");
-    }, []);
-
     return (
         <div className="container">
             <div className="header">
                 <NavLink to="/">Главная</NavLink>
                 <NavLink to="/catalog">Каталог</NavLink>
+                <NavLink to="/products">Все товары</NavLink>
+                <NavLink to="/cart">Корзина</NavLink>
                 <NavLink to="/contacts">Контакты</NavLink>
             </div>
             <div className="content">
@@ -27,6 +23,10 @@ const App = observer(() => {
                     <Route path="/" element={<Main />} />
                     <Route path="/catalog" element={<Catalog />} />
                     <Route path="/contacts" element={<Contacts />} />
+                    <Route
+                        path="/catalog/:categoryName"
+                        element={<Category />}
+                    />
                 </Routes>
             </div>
             <div className="footer">Footer</div>

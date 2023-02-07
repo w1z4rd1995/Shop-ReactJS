@@ -2,7 +2,7 @@
     display: grid;
 
     grid-template-areas:
-        ". header1 header1 ."
+        "header1 header1 header1 header1"
         ". content1 content1 ."
         "footer1 footer1 footer1 footer1";
     grid-template-rows: 50px 1fr 150px;
