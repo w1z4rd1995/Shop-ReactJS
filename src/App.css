@@ -3,21 +3,22 @@
 
     grid-template-areas:
         "header1 header1 header1 header1"
-        ". content1 content1 ."
+        "content1 content1 content1 content1"
         "footer1 footer1 footer1 footer1";
-    grid-template-rows: 50px 1fr 150px;
+    grid-template-rows: 150px 1fr 150px;
     grid-row-gap: 20px;
     grid-template-columns: 10% 1fr 1fr 10%;
 }
 
 .header,
-.content,
 .footer {
     border: solid 1px black;
 }
 
 .content {
     grid-area: content1;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
 .header {
@@ -34,7 +35,7 @@
 }
 
 .header > a {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     padding-left: 20px;
     padding-right: 20px;
     color: white;
@@ -51,7 +52,32 @@
 
 .catalogContent {
     display: grid;
-    grid-template-columns: auto auto auto;
+    /* grid-template-columns: auto auto auto; */
+    grid-template-columns: 1fr 1fr 1fr;
     grid-auto-rows: 200px;
-    grid-row-gap: 20px;
+    grid-row-gap: 80px;
+    grid-column-gap: 80px;
+    /* align-items: center;
+    justify-items: center; */
+}
+
+.catalogContent > div {
+    /* height: 100%;
+    width: 100%; */
+    border: solid 1px black;
+    border-radius: 10px;
+    font-size: 1.7rem;
+}
+
+.catalogContent > div:hover {
+    background-color: rgba(168, 228, 208, 0.404);
+}
+.catalogContent > div > a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: black;
 }
