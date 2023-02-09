@@ -81,3 +81,72 @@
     text-decoration: none;
     color: black;
 }
+
+.productContainer {
+    display: grid;
+    grid-template-areas:
+        ". sort sort"
+        "filter products products"
+        ". products products"
+        ". products products";
+
+    grid-row-gap: 50px;
+    grid-column-gap: 30px;
+    grid-template-columns: 20% 1fr 1fr;
+    grid-template-rows: 50px auto 1fr;
+}
+
+.filters {
+    grid-area: filter;
+}
+
+.sorting {
+    grid-area: sort;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    grid-auto-rows: auto;
+    grid-area: products;
+}
+
+.filters,
+.sorting {
+    border: solid 1px black;
+}
+
+.oneProduct {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    border: solid 1px black;
+    border-radius: 30px;
+    /* justify-content: space-between; */
+}
+
+.oneProduct > div > img {
+    /* display: flex; */
+    /* align-items: center; */
+    width: 80%;
+    height: 100%;
+    object-fit: contain;
+
+    /* justify-content: center; */
+    align-content: space-between;
+    flex-wrap: wrap;
+}
+
+.imageStyle {
+    padding-top: 20px;
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+}
