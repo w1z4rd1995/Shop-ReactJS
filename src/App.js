@@ -7,6 +7,7 @@ import { observer } from "mobx-react-lite";
 import { useEffect, useState, useContext } from "react";
 import { StoreContext } from "./Stores/AppStore";
 import { CategoryProducts } from "./Pages/CategoryProducts";
+import { Products } from "./components/Products";
 
 const App = observer(() => {
     return (
@@ -23,6 +24,8 @@ const App = observer(() => {
                     <Route path="/" element={<Main />} />
                     <Route path="/catalog" element={<Catalog />} />
                     <Route path="/contacts" element={<Contacts />} />
+                    <Route path="/products" element={<Products />} />
+
                     <Route
                         path="/catalog/:categoryName"
                         element={<CategoryProducts />}
