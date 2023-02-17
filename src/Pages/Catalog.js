@@ -15,7 +15,7 @@ export const Catalog = observer(() => {
     console.log(store.IsReady);
     return (
         <div className="catalogContent">
-            {store.ApiData &&
+            {store.IsReady &&
                 store.Categories.map((item, index) => (
                     <div key={index}>
                         <Link to={`${item}`}>{item} </Link>

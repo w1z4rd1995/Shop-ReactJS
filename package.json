@@ -5,6 +5,8 @@
     "dependencies": {
         "@emotion/react": "^11.10.5",
         "@emotion/styled": "^11.10.5",
+        "@material/checkbox": "^14.0.0",
+        "@material/slider": "^14.0.0",
         "@mui/lab": "^5.0.0-alpha.120",
         "@mui/styled-engine": "^5.11.9",
         "@mui/system": "^5.11.9",

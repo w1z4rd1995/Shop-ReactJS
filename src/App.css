@@ -90,7 +90,7 @@
         ". products products"
         ". products products";
 
-    grid-row-gap: 50px;
+    grid-row-gap: 20px;
     grid-column-gap: 30px;
     grid-template-columns: 20% 1fr 1fr;
     grid-template-rows: 50px auto 1fr;
@@ -102,6 +102,18 @@
 
 .sorting {
     grid-area: sort;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.sorting > div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 .products {
