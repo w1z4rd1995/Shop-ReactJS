@@ -11,8 +11,8 @@ export class AppStore {
     Categories = [];
     IsReady = false;
 
-    isSortingSelect = false;
-    sortingArr = {};
+    // cartProduct = { id: "name", op: 123 };
+    cartProduct = [];
 
     fetchData = async () => {
         const api_url = "https://fakestoreapi.com/products";
@@ -27,8 +27,9 @@ export class AppStore {
         // console.log(this.ApiData);
         // console.log(this.storeCategories);
     };
+
     sortingByPrice() {
-        this.sortingArr = this.ApiData.sort((first, second) => {
+        this.ApiData.sort((first, second) => {
             if (first.price > second.price) {
                 return 1;
             } else if (first.price < second.price) {
@@ -38,7 +39,7 @@ export class AppStore {
     }
 
     sortingByName() {
-        this.sortingArr = this.ApiData.sort((first, second) => {
+        this.ApiData.sort((first, second) => {
             const firstItem = first.title?.toLowerCase();
             const secondItem = second.title?.toLowerCase();
 
@@ -51,13 +52,23 @@ export class AppStore {
     }
 
     sortingByRating() {
-        this.sortingArr = this.ApiData.sort((first, second) => {
+        this.ApiData.sort((first, second) => {
             if (first.rating.rate > second.rating.rate) {
                 return 1;
             } else if (first.rating.rate < second.rating.rate) {
                 return -1;
             } else return 0;
         });
+    }
+
+    addCart(item) {
+        console.log(item);
+        this.cartProduct.push(item);
+    }
+
+    deleteCartItem(id) {
+        console.log("delete func");
+        this.cartProduct = this.cartProduct.filter((item) => item.id !== id);
     }
 }
 export const store = new AppStore();

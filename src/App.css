@@ -172,3 +172,53 @@
     flex-direction: row;
     justify-content: space-between;
 }
+
+.cartContainer {
+    display: grid;
+
+    grid-template-areas:
+        " cartProducts cartProducts totalPrice"
+        " cartProducts cartProducts ."
+        " cartProducts cartProducts ."
+        " cartProducts cartProducts .";
+
+    grid-row-gap: 20px;
+    grid-column-gap: 30px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+}
+
+.totalPrice {
+    grid-area: totalPrice;
+    border: solid 1px black;
+}
+.cartProducts {
+    grid-area: cartProducts;
+    border: solid 1px black;
+}
+
+.cart {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.cart > div > img {
+    /* display: flex; */
+    /* align-items: center; */
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+
+    /* align-content: space-between; */
+    /* flex-wrap: wrap; */
+}
+
+.imageCart {
+    /* padding-top: 20px; */
+    width: 200px;
+    height: 200px;
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+}

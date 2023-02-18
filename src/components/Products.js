@@ -7,13 +7,13 @@ import Slider from "@mui/material/Slider";
 import { observer } from "mobx-react-lite";
 
 export const Products = observer(() => {
-    const [sliderValue, setSliderValue] = useState([0, 100]);
     const [isChecked, setIsChecked] = useState({
         price: false,
         name: false,
         rating: false,
     });
 
+    const [sliderValue, setSliderValue] = useState([0, 100]);
     const onSliderChange = (event, newValue) => {
         setSliderValue(newValue);
     };
@@ -23,6 +23,7 @@ export const Products = observer(() => {
             store.fetchData();
         }
     }, []);
+
     return (
         <div className="productContainer">
             <div className="filters">

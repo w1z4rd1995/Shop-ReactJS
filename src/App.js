@@ -4,10 +4,9 @@ import { Catalog } from "./Pages/Catalog";
 import { Contacts } from "./Pages/Contacts";
 import { Main } from "./Pages/Main";
 import { observer } from "mobx-react-lite";
-import { useEffect, useState, useContext } from "react";
-import { StoreContext } from "./Stores/AppStore";
 import { CategoryProducts } from "./Pages/CategoryProducts";
 import { Products } from "./components/Products";
+import { Cart } from "./Pages/Cart";
 
 const App = observer(() => {
     return (
@@ -25,6 +24,7 @@ const App = observer(() => {
                     <Route path="/catalog" element={<Catalog />} />
                     <Route path="/contacts" element={<Contacts />} />
                     <Route path="/products" element={<Products />} />
+                    <Route path="/cart" element={<Cart />} />
 
                     <Route
                         path="/catalog/:categoryName"

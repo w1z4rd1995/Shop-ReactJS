@@ -1,5 +1,6 @@
 import { observer } from "mobx-react-lite";
 import Rating from "@mui/material/Rating";
+import { store } from "../Stores/AppStore";
 
 export const OneProduct = observer((props) => {
     return (
@@ -17,7 +18,14 @@ export const OneProduct = observer((props) => {
                     <input type="button" value="Подробнее"></input>
                 </div>
                 <div>
-                    <input type="button" value="В корзину"></input>
+                    <input
+                        type="button"
+                        value="В корзину"
+                        onClick={() => {
+                            store.addCart(props.Item);
+                            console.log("button");
+                        }}
+                    ></input>
                 </div>
             </div>
         </div>
