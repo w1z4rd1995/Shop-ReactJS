@@ -8,12 +8,13 @@ export const OneCart = observer((props) => {
             <div className="imageCart">
                 <img src={props.Items.image} />
             </div>
-            <div>{props.Items.title}</div>
-            <div>
+            <div className="cartTitle">{props.Items.title}</div>
+            <div className="cartRating">
                 <Rating value={props.Items.rating.rate} readOnly />
             </div>
-            <div>{props.Items.price} $</div>
-            <div>
+            <div className="cartPrice">{props.Items.price} $</div>
+            <div className="cartItemQuantity">кол-во</div>
+            <div className="cartButtons">
                 <input
                     type="button"
                     value="Удалить"

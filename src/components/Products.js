@@ -27,9 +27,23 @@ export const Products = observer(() => {
     return (
         <div className="productContainer">
             <div className="filters">
-                <div>Фильтры:</div>
                 <div>
-                    Цена
+                    <h4>Фильтры</h4>
+                </div>
+                <div>Цена</div>
+                <div className="inputStyle">
+                    <input type="text" />
+                    <input type="text" />
+                </div>
+                <div>
+                    <text>от</text>
+
+                    <div>
+                        <text>до</text>
+                    </div>
+                </div>
+
+                <div className="sliderStyle">
                     <Slider
                         value={sliderValue}
                         valueLabelDisplay="auto"

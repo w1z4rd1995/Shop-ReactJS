@@ -8,25 +8,20 @@ export const OneProduct = observer((props) => {
             <div className="imageStyle">
                 <img src={props.Item.image} />
             </div>
-            <div>{props.Item.title}</div>
-            <div>
+            <div className="titleStyle">{props.Item.title}</div>
+            <div className="ratingStyle">
                 <Rating value={props.Item.rating.rate} readOnly />
             </div>
-            <div>{props.Item.price} $</div>
-            <div className="cardButtons">
-                <div>
-                    <input type="button" value="Подробнее"></input>
-                </div>
-                <div>
-                    <input
-                        type="button"
-                        value="В корзину"
-                        onClick={() => {
-                            store.addCart(props.Item);
-                            console.log("button");
-                        }}
-                    ></input>
-                </div>
+            <div className="priceStyle">{props.Item.price} $</div>
+            <div className="addButtonStyle">
+                <input
+                    className="inputButtonStyle"
+                    type="button"
+                    value="В корзину"
+                    onClick={() => {
+                        store.addCart(props.Item);
+                    }}
+                ></input>
             </div>
         </div>
     );
