@@ -24,8 +24,6 @@ export class AppStore {
 
         const temp = this.ApiData.map((item) => item.category);
         this.Categories = [...new Set(temp)];
-        // console.log(this.ApiData);
-        // console.log(this.storeCategories);
     };
 
     sortingByPrice() {
@@ -62,7 +60,6 @@ export class AppStore {
     }
 
     addCart(item) {
-        console.log(item);
         this.cartProduct.push(item);
     }
 

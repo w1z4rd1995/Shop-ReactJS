@@ -32,14 +32,14 @@ export const Products = observer(() => {
                 </div>
                 <div>Цена</div>
                 <div className="inputStyle">
-                    <input type="text" />
-                    <input type="text" />
+                    <input type="number" />
+                    <input type="number" />
                 </div>
                 <div>
-                    <text>от</text>
+                    <div>от</div>
 
                     <div>
-                        <text>до</text>
+                        <div>до</div>
                     </div>
                 </div>
 
@@ -56,22 +56,30 @@ export const Products = observer(() => {
                 Сортировать по:
                 <div>
                     <Checkbox
-                        checked={isChecked[0]}
-                        onChange={(event) => {
-                            setIsChecked({ price: event.target.checked });
-                            if (event.target.checked === true) {
+                        checked={isChecked.price}
+                        onChange={() => {
+                            if (!isChecked.price) {
                                 store.sortingByPrice();
                             }
+                            setIsChecked({
+                                price: !isChecked.price,
+                                name: false,
+                                rating: false,
+                            });
                         }}
                     />
                     Цене
                 </div>
                 <div>
                     <Checkbox
-                        checked={isChecked[1]}
-                        onChange={(event) => {
-                            setIsChecked({ name: event.target.checked });
-                            if (event.target.checked === true) {
+                        checked={isChecked.name}
+                        onChange={() => {
+                            setIsChecked({
+                                name: !isChecked.name,
+                                price: false,
+                                rating: false,
+                            });
+                            if (!isChecked.name) {
                                 store.sortingByName();
                             }
                         }}
@@ -80,10 +88,14 @@ export const Products = observer(() => {
                 </div>
                 <div>
                     <Checkbox
-                        checked={isChecked[2]}
-                        onChange={(event) => {
-                            setIsChecked({ rating: event.target.checked });
-                            if (event.target.checked === true) {
+                        checked={isChecked.rating}
+                        onChange={() => {
+                            setIsChecked({
+                                rating: !isChecked.rating,
+                                name: false,
+                                price: false,
+                            });
+                            if (!isChecked.rating) {
                                 store.sortingByRating();
                             }
                         }}
@@ -94,6 +106,7 @@ export const Products = observer(() => {
             <div className="products">
                 {store.IsReady &&
                     store.ApiData.map((item) => {
+                        item.quantity = 0;
                         return (
                             <div key={item.id}>
                                 <OneProduct Item={item} />
