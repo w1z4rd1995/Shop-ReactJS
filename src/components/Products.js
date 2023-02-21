@@ -106,7 +106,6 @@ export const Products = observer(() => {
             <div className="products">
                 {store.IsReady &&
                     store.ApiData.map((item) => {
-                        item.quantity = 0;
                         return (
                             <div key={item.id}>
                                 <OneProduct Item={item} />

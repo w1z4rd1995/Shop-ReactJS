@@ -4,8 +4,7 @@ import { store } from "../Stores/AppStore";
 import { useState } from "react";
 
 export const OneProduct = observer((props) => {
-    const [counter, setCounter] = useState(0);
-    console.log(props.Item.quantity);
+    const [quantity, setQuantity] = useState(0);
 
     return (
         <div className="oneProduct">
@@ -16,22 +15,23 @@ export const OneProduct = observer((props) => {
             <div className="ratingStyle">
                 <Rating
                     className="ratingStyle"
-                    value={props.Item.rating.rate}
+                    value={props.Item.rating}
                     readOnly
                 />
             </div>
             <div className="priceStyle">{props.Item.price} $</div>
 
             <div className="addButtonStyle">
-                {counter === 0 ? (
+                {props.Item.isCart === false ? (
                     <input
                         className="inputButtonStyle"
                         type="button"
                         value="В корзину"
                         onClick={() => {
-                            store.addCart(props.Item);
-                            props.Item.quantity += 1;
-                            console.log(props.Item.quantity);
+                            console.log(props.Item.id);
+                            store.addCart(props.Item.id);
+
+                            // console.log(props.Item.quantity);
                         }}
                     ></input>
                 ) : (

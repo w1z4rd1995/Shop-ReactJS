@@ -232,8 +232,8 @@
     grid-column-gap: 30px;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: auto;
-    padding-left: 200px;
-    padding-right: 200px;
+    /* padding-left: 30px; */
+    padding-right: 100px;
 }
 
 .totalPrice {
