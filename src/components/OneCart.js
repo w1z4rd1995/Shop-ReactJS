@@ -1,9 +1,13 @@
 import { observer } from "mobx-react-lite";
 import Rating from "@mui/material/Rating";
 import { store } from "../Stores/AppStore";
+import { useState } from "react";
+import { ItemCounter } from "./ItemCounter";
 
 export const OneCart = observer((props) => {
-    console.log("OneCart");
+    // let price = props.Item.price;
+    const [counter, setCounter] = useState(1);
+    const totalPrice = (counter * props.Item.price).toFixed(2);
 
     return (
         <div className="cart">
@@ -17,9 +21,15 @@ export const OneCart = observer((props) => {
                 </div>
             </div>
 
-            <div className="cartItemQuantity">кол-во</div>
+            <div className="cartItemQuantity">
+                <ItemCounter
+                    Counter={counter}
+                    SetCounter={setCounter}
+                    Id={props.Item.id}
+                />
+            </div>
             <div className="cartButtons">
-                <div className="cartPrice">{props.Item.price} $</div>
+                <div className="cartPrice">{totalPrice} $</div>
                 <input
                     className="deleteButtonStyle"
                     type="button"

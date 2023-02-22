@@ -163,7 +163,7 @@
 .oneProduct:hover {
     border: solid 1px coral;
 
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 .oneProduct > div > img {
     width: 170px;
@@ -202,12 +202,33 @@
     /* background-color: coral; */
     /* padding-bottom: 10px; */
 }
+.addButtonStyle > .cartLink > a {
+    text-decoration: none;
+    width: 130px;
+    height: 40px;
+    background-color: rgb(9, 182, 9);
+    color: white;
+    font-size: 1.1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.addButtonStyle > .cartLink > a:hover {
+    background-color: green;
+}
+.cartLink {
+    width: 130px;
+    height: 40px;
+    border-radius: 10px;
+}
+
 .inputButtonStyle:hover {
     background-color: rgb(212, 99, 17);
     box-shadow: rgb(112, 103, 81);
     cursor: pointer;
 }
-
 .inputButtonStyle {
     width: 130px;
     height: 40px;
@@ -259,6 +280,7 @@
     padding-top: 20px;
     padding-bottom: 20px;
     background-color: white;
+    box-shadow: 0 0 10px 2px rgba(221, 221, 221, 1);
 }
 
 .cart > div > img {
@@ -299,7 +321,7 @@
 
 .cartPrice {
     font-size: 1.2rem;
-    font-weight: inherit;
+    font-weight: bold;
     /* align-items: center; */
     justify-content: center;
     align-self: center;
@@ -374,4 +396,36 @@
     padding-bottom: 20px;
     padding-right: 50px;
     padding-left: 50px;
+}
+
+.counterStyle {
+    display: flex;
+    flex-direction: row;
+    /* width: auto; */
+}
+
+.counterStyle > div {
+    width: 50px;
+    height: 100%;
+}
+.counterStyle > div > input {
+    width: 50px;
+    height: 100%;
+}
+.counterText {
+    width: 50px;
+    height: 100%;
+}
+
+/* .counterDecrease {
+    width: 100%;
+    height: 20px;
+    padding: 0;
+    margin: 0;
+} */
+
+.cartItemQuantity {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

@@ -2,6 +2,7 @@ import { observer } from "mobx-react-lite";
 import Rating from "@mui/material/Rating";
 import { store } from "../Stores/AppStore";
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 export const OneProduct = observer((props) => {
     const [quantity, setQuantity] = useState(0);
@@ -28,14 +29,13 @@ export const OneProduct = observer((props) => {
                         type="button"
                         value="В корзину"
                         onClick={() => {
-                            console.log(props.Item.id);
                             store.addCart(props.Item.id);
-
-                            // console.log(props.Item.quantity);
                         }}
                     ></input>
                 ) : (
-                    <div>123</div>
+                    <div className="cartLink">
+                        <NavLink to="/cart">Добавлено</NavLink>
+                    </div>
                 )}
             </div>
         </div>
