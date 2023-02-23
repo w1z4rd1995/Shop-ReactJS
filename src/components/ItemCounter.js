@@ -3,18 +3,31 @@ import { store } from "../Stores/AppStore";
 import { observer } from "mobx-react-lite";
 
 export const ItemCounter = observer((props) => {
+    const [counterItem, setCounterItem] = useState(props.Quantity);
+    let counter = counterItem;
     const minValue = 0;
     const maxValue = 20;
-    console.log(props.Counter);
+
+    // console.log(props.Quantity, "item");
+
     const increase = () => {
-        if (props.Counter < maxValue) props.SetCounter(props.Counter + 1);
+        if (counter < maxValue) {
+            counter += 1;
+            setCounterItem(counter);
+        }
+        // counter = counter + 1;
+        store.setNewQuantity(props.Id, counter);
     };
 
     const decrease = () => {
-        if (props.Counter > minValue) {
-            props.SetCounter(props.Counter - 1);
+        if (counter > minValue) {
+            counter -= 1;
+            setCounterItem(counter);
+            store.setNewQuantity(props.Id, counter);
         }
-        if (props.Counter === 1) {
+        // counter -= 1;
+
+        if (counter === 0) {
             store.deleteCartItem(props.Id);
         }
     };
@@ -33,7 +46,7 @@ export const ItemCounter = observer((props) => {
                 <input
                     className="counterText"
                     type="text"
-                    value={props.Counter}
+                    value={props.Quantity}
                     readOnly
                 />
             </div>

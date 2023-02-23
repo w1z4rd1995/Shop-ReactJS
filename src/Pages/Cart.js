@@ -6,11 +6,15 @@ import { NavLink } from "react-router-dom";
 import { useState } from "react";
 
 export const Cart = observer(() => {
+    let counterCartItems = 0;
     let empty = 0;
-
+    let totalPrice = 0;
+    console.log(counterCartItems);
     store.ApiData.map((item) => {
         if (item.isCart === true) {
             empty = empty + 1;
+            counterCartItems = counterCartItems + item.cartQuantity;
+            totalPrice = totalPrice + item.totalPrice;
         }
     });
 
@@ -18,13 +22,23 @@ export const Cart = observer(() => {
         <>
             {empty > 0 && (
                 <div className="cartContainer">
-                    <div className="totalPrice">TotalPrice</div>
+                    <div className="totalPrice">
+                        <div>В корзине</div>
+                        <div>{counterCartItems} товаров</div>
+                        <div>на сумму {totalPrice} $</div>
+                    </div>
                     <div className="cartProducts">
                         {store.ApiData.map((item) => {
                             if (item.isCart === true) {
                                 return (
                                     <div key={item.id}>
-                                        <OneCart Item={item} />
+                                        <OneCart
+                                            Item={item}
+                                            // Counter={counter}
+                                            // SetCounter={setCounter}
+                                            // TotalPrice={totalPrice}
+                                            // SetTotalPrice={setTotalPrice}
+                                        />
                                     </div>
                                 );
                             }

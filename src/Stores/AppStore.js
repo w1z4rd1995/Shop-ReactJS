@@ -11,7 +11,9 @@ export class OneProductDescription {
         rating,
         image,
         description,
-        isCart
+        isCart,
+        cartQuantity,
+        totalPrice
     ) {
         this.id = id;
         this.title = title;
@@ -21,6 +23,8 @@ export class OneProductDescription {
         this.image = image;
         this.description = description;
         this.isCart = isCart;
+        this.cartQuantity = cartQuantity;
+        this.totalPrice = price;
     }
 }
 
@@ -54,7 +58,8 @@ export class AppStore {
                     item.rating.rate,
                     item.image,
                     item.description,
-                    (item.isCart = false)
+                    (item.isCart = false),
+                    (item.cartQuantity = 1)
                 )),
                 this.ApiData.push(this.oneNewItem)
             )
@@ -112,6 +117,45 @@ export class AppStore {
             } else return item;
         });
     }
+
+    setNewQuantity(id, quantity) {
+        if (quantity > 0) {
+            this.ApiData = this.ApiData.map((item) => {
+                if (item.id === id) {
+                    return {
+                        ...item,
+                        cartQuantity: quantity,
+                        totalPrice: item.price * quantity,
+                    };
+                } else return item;
+            });
+        }
+    }
+
+    // increaseCounter(id, counter) {
+    //     this.ApiData = this.ApiData.map((item) => {
+    //         if (item.id === id) {
+    //             return {
+    //                 ...item,
+    //                 cartQuantity: counter,
+    //                 totalPrice: item.price * item.cartQuantity,
+    //             };
+    //         } else return item;
+    //     });
+    // }
+
+    // decreaseCounter(id, counter) {
+    //     this.ApiData = this.ApiData.map((item) => {
+    //         if (item.id === id) {
+    //             console.log(item.cartQuantity);
+    //             return {
+    //                 ...item,
+    //                 cartQuantity: counter,
+    //                 totalPrice: item.price * item.cartQuantity,
+    //             };
+    //         } else return item;
+    //     });
+    // }
 }
 export const store = new AppStore();
 export const StoreContext = createContext(store);
