@@ -94,9 +94,9 @@ export class AppStore {
 
     sortingByRating() {
         this.ApiData.sort((first, second) => {
-            if (first.rating.rate > second.rating.rate) {
+            if (first.rating > second.rating) {
                 return 1;
-            } else if (first.rating.rate < second.rating.rate) {
+            } else if (first.rating < second.rating) {
                 return -1;
             } else return 0;
         });

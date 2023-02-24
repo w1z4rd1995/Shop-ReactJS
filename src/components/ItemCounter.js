@@ -34,15 +34,15 @@ export const ItemCounter = observer((props) => {
 
     return (
         <div className="counterStyle">
-            <div className="">
+            <div className="buttonTextStyle">
                 <input
-                    className="counterDecrease"
+                    className="counterButton"
                     type="button"
                     value="-"
                     onClick={decrease}
-                />
+                ></input>
             </div>
-            <div>
+            <div className="counter">
                 <input
                     className="counterText"
                     type="text"
@@ -50,8 +50,13 @@ export const ItemCounter = observer((props) => {
                     readOnly
                 />
             </div>
-            <div>
-                <input type="button" value="+" onClick={increase} />
+            <div className="buttonTextStyle">
+                <input
+                    className="counterButton"
+                    type="button"
+                    value="+"
+                    onClick={increase}
+                />
             </div>
         </div>
     );

@@ -5,7 +5,7 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 export const OneProduct = observer((props) => {
-    const [quantity, setQuantity] = useState(0);
+    // const [quantity, setQuantity] = useState(0);
 
     return (
         <div className="oneProduct">

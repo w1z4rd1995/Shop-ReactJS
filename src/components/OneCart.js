@@ -31,7 +31,7 @@ export const OneCart = observer((props) => {
             <div className="cartButtons">
                 <div className="cartPrice">
                     {/* {props.Item.cartQuantity * props.Item.price} $ */}
-                    {props.Item.totalPrice} $
+                    {props.Item.totalPrice.toFixed(2)} $
                 </div>
                 <input
                     className="deleteButtonStyle"
