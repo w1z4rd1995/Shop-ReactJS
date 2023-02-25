@@ -35,11 +35,12 @@ export class AppStore {
 
     ApiData = [];
     Categories = [];
-    IsReady = false;
-
-    // cartProduct = { id: "name", op: 123 };
     cartProduct = [];
     oneNewItem = {};
+    IsReady = false;
+
+    minPrice;
+    maxPrice;
 
     fetchData = async () => {
         const api_url = "https://fakestoreapi.com/products";
@@ -67,7 +68,21 @@ export class AppStore {
 
         const temp = this.ApiData.map((item) => item.category);
         this.Categories = [...new Set(temp)];
+        store.findMinMaxPrice();
     };
+
+    findMinMaxPrice() {
+        if (this.IsReady) {
+            const minPriceItem = this.ApiData.reduce((first, second) =>
+                first.price > second.price ? second : first
+            );
+            const maxPriceItem = this.ApiData.reduce((first, second) =>
+                first.price < second.price ? second : first
+            );
+            this.minPrice = minPriceItem.price;
+            this.maxPrice = maxPriceItem.price;
+        }
+    }
 
     sortingByPrice() {
         this.ApiData.sort((first, second) => {
@@ -131,31 +146,6 @@ export class AppStore {
             });
         }
     }
-
-    // increaseCounter(id, counter) {
-    //     this.ApiData = this.ApiData.map((item) => {
-    //         if (item.id === id) {
-    //             return {
-    //                 ...item,
-    //                 cartQuantity: counter,
-    //                 totalPrice: item.price * item.cartQuantity,
-    //             };
-    //         } else return item;
-    //     });
-    // }
-
-    // decreaseCounter(id, counter) {
-    //     this.ApiData = this.ApiData.map((item) => {
-    //         if (item.id === id) {
-    //             console.log(item.cartQuantity);
-    //             return {
-    //                 ...item,
-    //                 cartQuantity: counter,
-    //                 totalPrice: item.price * item.cartQuantity,
-    //             };
-    //         } else return item;
-    //     });
-    // }
 }
 export const store = new AppStore();
 export const StoreContext = createContext(store);

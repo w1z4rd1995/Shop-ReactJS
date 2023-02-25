@@ -396,7 +396,8 @@
     font-size: 1.2rem;
     /* padding-bottom: 10px; */
 }
-.filters > div > input {
+.inputMin,
+.inputMax {
     width: 80px;
     height: 30px;
     font-size: 1rem;
@@ -456,6 +457,9 @@
 .counterText:focus {
     border: none;
     outline: none;
+    cursor: default;
+}
+.counterText:hover {
     cursor: default;
 }
 .counter {
@@ -518,4 +522,28 @@
 .buttonTextStyle:active {
     position: relative;
     top: 1px;
+}
+
+.buttonTextStyle:hover {
+    cursor: pointer;
+}
+.counterButton {
+    cursor: pointer;
+}
+
+.filterButton {
+    width: 130px;
+    height: 40px;
+    background-color: coral;
+    color: white;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    border: none;
+    border-color: coral;
+    /* font-weight: 500; */
+}
+
+.filterButtonStyle {
+    width: 160px;
+    height: 40px;
 }

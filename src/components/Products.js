@@ -13,7 +13,15 @@ export const Products = observer(() => {
         rating: false,
     });
 
-    const [sliderValue, setSliderValue] = useState([0, 100]);
+    const [sliderValue, setSliderValue] = useState([
+        store.minPrice,
+        store.maxPrice,
+    ]);
+    console.log(store.minPrice);
+    console.log(store.maxPrice);
+    console.log(sliderValue[0]);
+
+    // console.log(sliderValue);
     const onSliderChange = (event, newValue) => {
         setSliderValue(newValue);
     };
@@ -32,8 +40,17 @@ export const Products = observer(() => {
                 </div>
                 <div>Цена</div>
                 <div className="inputStyle">
-                    <input type="number" />
-                    <input type="number" />
+                    <input
+                        className="inputMin"
+                        type="number"
+                        // defaultValue={sliderValue[0]}
+                        value={sliderValue[0]}
+                    />
+                    <input
+                        className="inputMax"
+                        type="number"
+                        value={sliderValue[1]}
+                    />
                 </div>
                 <div>
                     <div>от</div>
@@ -45,10 +62,20 @@ export const Products = observer(() => {
 
                 <div className="sliderStyle">
                     <Slider
+                        // min={store.minPrice}
+                        max={store.maxPrice}
                         value={sliderValue}
                         valueLabelDisplay="auto"
                         onChange={onSliderChange}
                         disableSwap
+                        step={100}
+                    />
+                </div>
+                <div className="filterButtonStyle">
+                    <input
+                        className="filterButton"
+                        type="button"
+                        value="Применить"
                     />
                 </div>
             </div>
@@ -106,10 +133,13 @@ export const Products = observer(() => {
             <div className="products">
                 {store.IsReady &&
                     store.ApiData.map((item) => {
-                        return (
+                        return item.price >= sliderValue[0] &&
+                            item.price <= sliderValue[1] ? (
                             <div key={item.id}>
                                 <OneProduct Item={item} />
                             </div>
+                        ) : (
+                            ""
                         );
                     })}
             </div>
