@@ -46,9 +46,7 @@ export class AppStore {
         const api_url = "https://fakestoreapi.com/products";
         const response = await axios.get(api_url);
         const tempApiData = response.data;
-        if (tempApiData !== {}) {
-            this.IsReady = true;
-        }
+
         tempApiData.map(
             (item) => (
                 (this.oneNewItem = new OneProductDescription(
@@ -68,20 +66,19 @@ export class AppStore {
 
         const temp = this.ApiData.map((item) => item.category);
         this.Categories = [...new Set(temp)];
+
         store.findMinMaxPrice();
     };
 
     findMinMaxPrice() {
-        if (this.IsReady) {
-            const minPriceItem = this.ApiData.reduce((first, second) =>
-                first.price > second.price ? second : first
-            );
-            const maxPriceItem = this.ApiData.reduce((first, second) =>
-                first.price < second.price ? second : first
-            );
-            this.minPrice = minPriceItem.price;
-            this.maxPrice = maxPriceItem.price;
-        }
+        const minPriceItem = this.ApiData.reduce((first, second) =>
+            first.price > second.price ? second : first
+        );
+        const maxPriceItem = this.ApiData.reduce((first, second) =>
+            first.price < second.price ? second : first
+        );
+        this.minPrice = minPriceItem.price;
+        this.maxPrice = maxPriceItem.price;
     }
 
     sortingByPrice() {

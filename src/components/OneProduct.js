@@ -2,7 +2,7 @@ import { observer } from "mobx-react-lite";
 import Rating from "@mui/material/Rating";
 import { store } from "../Stores/AppStore";
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export const OneProduct = observer((props) => {
     // const [quantity, setQuantity] = useState(0);
@@ -12,7 +12,11 @@ export const OneProduct = observer((props) => {
             <div className="imageStyle">
                 <img src={props.Item.image} />
             </div>
-            <div className="titleStyle">{props.Item.title}</div>
+            <div className="titleStyle">
+                <NavLink to={`/products/${props.Item.id}`}>
+                    {props.Item.title}
+                </NavLink>
+            </div>
             <div className="ratingStyle">
                 <Rating
                     className="ratingStyle"

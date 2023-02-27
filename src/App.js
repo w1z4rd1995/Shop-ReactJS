@@ -7,6 +7,7 @@ import { observer } from "mobx-react-lite";
 import { CategoryProducts } from "./Pages/CategoryProducts";
 import { Products } from "./components/Products";
 import { Cart } from "./Pages/Cart";
+import { OneProductPage } from "./Pages/OneProductPage";
 
 const App = observer(() => {
     return (
@@ -24,6 +25,11 @@ const App = observer(() => {
                     <Route path="/catalog" element={<Catalog />} />
                     <Route path="/contacts" element={<Contacts />} />
                     <Route path="/products" element={<Products />} />
+                    <Route
+                        path="/products/:productId"
+                        element={<OneProductPage />}
+                    />
+
                     <Route path="/cart" element={<Cart />} />
 
                     <Route
