@@ -64,7 +64,7 @@ export const Cart = observer(() => {
             {empty === 0 && (
                 <div className="emptyCart">
                     <div>
-                        <img src={emptyCart} loading="lazy" />
+                        <img src={emptyCart} />
                     </div>
                     <div>
                         Ваша корзина пуста. Вы можете вернуться к покупкам

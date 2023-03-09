@@ -10,17 +10,17 @@ export const Catalog = observer(() => {
         if (store.IsReady === false) {
             store.fetchData();
             console.log("зашел фетч");
+            store.IsReady = true;
         }
     }, []);
     console.log(store.IsReady);
     return (
         <div className="catalogContent">
-            {store.IsReady &&
-                store.Categories.map((item, index) => (
-                    <div key={index}>
-                        <Link to={`${item}`}>{item} </Link>
-                    </div>
-                ))}
+            {store.Categories.map((item, index) => (
+                <div key={index}>
+                    <Link to={`${item}`}>{item} </Link>
+                </div>
+            ))}
         </div>
     );
 });

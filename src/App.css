@@ -95,7 +95,7 @@
         ". products products"
         ". products products";
 
-    grid-row-gap: 20px;
+    grid-row-gap: 40px;
     grid-column-gap: 30px;
     grid-template-columns: 20% 1fr 1fr;
     grid-template-rows: 50px auto 1fr;
@@ -173,9 +173,15 @@
     /* padding-top: 20px;
     padding-right: 20px;
     padding-left: 20px; */
+    /* transition: 0.3s; */
 }
 .oneProduct:hover {
-    border: solid 1px coral;
+    /* position: absolute; */
+    /* width: 310px;
+    height: 410px; */
+    /* border: solid 1px coral; */
+    transition: 0.15s;
+    transform: scale(1.06);
 
     /* cursor: pointer; */
 }
@@ -556,4 +562,49 @@
 .filterButtonStyle {
     width: 160px;
     height: 40px;
+}
+
+.oneProductContainer {
+    display: grid;
+    grid-template-areas:
+        "oneProductTitle oneProductTitle "
+        "oneProductImage oneProductDescr"
+        "oneProductImage oneProductRating"
+        "oneProductImage oneProductPriceContainer"
+        "oneProductImage .";
+    grid-template-columns: auto 1fr;
+    grid-column-gap: 50px;
+    /* grid-row-gap: 20px; */
+    grid-template-rows: 1fr;
+    /* grid-template-rows: 150px 1fr 150px;
+    grid-row-gap: 20px;
+    grid-template-columns: 10% 1fr 1fr 10%;
+    background-color: rgba(238, 238, 238, 0.432); */
+}
+
+.oneProductTitle {
+    grid-area: oneProductTitle;
+}
+
+.oneProductImage {
+    grid-area: oneProductImage;
+    background-color: white;
+}
+.oneProductDescr {
+    grid-area: oneProductDescr;
+    text-align: justify;
+    /* padding-right: 50px; */
+}
+
+.oneProductRating {
+    grid-area: oneProductRating;
+}
+.oneProductPriceContainer {
+    grid-area: oneProductPriceContainer;
+}
+
+.oneProductImage > img {
+    width: 310px;
+    height: 310px;
+    object-fit: contain;
 }
