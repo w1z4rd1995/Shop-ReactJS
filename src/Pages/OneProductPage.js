@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { store } from "../Stores/AppStore";
 import Rating from "@mui/material/Rating";
+import ReactImageMagnify from "react-image-magnify";
 
 export const OneProductPage = () => {
     const params = useParams();
@@ -18,7 +19,24 @@ export const OneProductPage = () => {
                                     <h1>{item.title}</h1>
                                 </div>
                                 <div className="oneProductImage">
-                                    <img src={item.image} />
+                                    <ReactImageMagnify
+                                        {...{
+                                            smallImage: {
+                                                // isFluidWidth: true,
+                                                width: 500,
+                                                height: 500,
+
+                                                src: item.image,
+                                            },
+                                            largeImage: {
+                                                src: item.image,
+                                                width: 1500,
+                                                height: 1500,
+                                            },
+                                            isHintEnabled: true,
+                                        }}
+                                    />
+                                    {/* <img src={item.image} /> */}
                                 </div>
                                 <div className="oneProductDescr">
                                     <h3>Описание</h3>
