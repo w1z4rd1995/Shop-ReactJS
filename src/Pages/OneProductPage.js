@@ -2,8 +2,10 @@ import { useParams } from "react-router-dom";
 import { store } from "../Stores/AppStore";
 import Rating from "@mui/material/Rating";
 import ReactImageMagnify from "react-image-magnify";
+import { Link, NavLink } from "react-router-dom";
+import { observer } from "mobx-react-lite";
 
-export const OneProductPage = () => {
+export const OneProductPage = observer(() => {
     const params = useParams();
     const productId = Number(params.productId);
     console.log(productId);
@@ -38,20 +40,53 @@ export const OneProductPage = () => {
                                     />
                                     {/* <img src={item.image} /> */}
                                 </div>
-                                <div className="oneProductDescr">
-                                    <h3>Описание</h3>
-                                    {item.description}
-                                </div>
-                                <div className="oneProductRating">
-                                    <h3>Рейтинг</h3>
-                                    <Rating value={item.rating} readOnly />
-                                    {item.rating}
+                                <div className="oneProductInfo">
+                                    <div className="oneProductCategory">
+                                        <h3>Категория</h3>
+                                        {item.category}
+                                    </div>
+                                    <div className="oneProductDescr">
+                                        <h3>Описание</h3>
+                                        {item.description}
+                                    </div>
+                                    <div className="oneProductRating">
+                                        <h3>Рейтинг</h3>
+                                        <div className="oneProductRatingStyle">
+                                            <div>
+                                                <Rating
+                                                    value={item.rating}
+                                                    readOnly
+                                                />{" "}
+                                            </div>
+                                            <div>{item.rating}</div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div className="oneProductPriceContainer">
-                                    <h3>Цена</h3>
-                                    {item.price} $
+                                    <div className="oneProductPriceStyle">
+                                        {item.price} $
+                                    </div>
+                                    <div className="oneProductAddButton">
+                                        {item.isCart === false ? (
+                                            <input
+                                                type="button"
+                                                value="В корзину"
+                                                onClick={() => {
+                                                    store.addCart(item.id);
+                                                }}
+                                            />
+                                        ) : (
+                                            <>
+                                                <div className="cartLink">
+                                                    <NavLink to="/cart">
+                                                        Добавлено
+                                                    </NavLink>
+                                                </div>
+                                                <div></div>
+                                            </>
+                                        )}
+                                    </div>
                                 </div>
-                                {/* <div></div> */}
                             </div>
                         );
                     }
@@ -59,4 +94,4 @@ export const OneProductPage = () => {
             </div>
         )
     );
-};
+});

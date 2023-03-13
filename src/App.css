@@ -576,15 +576,15 @@
 .oneProductContainer {
     display: grid;
     grid-template-areas:
-        "oneProductTitle oneProductTitle "
-        "oneProductImage oneProductDescr"
-        "oneProductImage oneProductRating"
-        "oneProductImage oneProductPriceContainer"
-        "oneProductImage .";
-    grid-template-columns: auto 1fr;
-    grid-column-gap: 50px;
+        "oneProductTitle oneProductTitle ."
+        "oneProductImage oneProductInfo oneProductPriceContainer"
+        "oneProductImage oneProductInfo oneProductPriceContainer"
+        "oneProductImage oneProductInfo ."
+        "oneProductImage oneProductInfo .";
+    grid-template-columns: auto 2fr 1fr;
+    grid-column-gap: 20px;
     /* grid-row-gap: 20px; */
-    grid-template-rows: 1fr;
+    grid-template-rows: 1fr auto auto;
     /* grid-template-rows: 150px 1fr 150px;
     grid-row-gap: 20px;
     grid-template-columns: 10% 1fr 1fr 10%;
@@ -605,15 +605,8 @@
     /* padding-right: 50px; */
 }
 
-.oneProductRating {
-    grid-area: oneProductRating;
-}
 .oneProductRating > span {
     position: static;
-}
-
-.oneProductPriceContainer {
-    grid-area: oneProductPriceContainer;
 }
 
 .oneProductImage {
@@ -621,11 +614,104 @@
 
     width: 500px;
     height: 500px;
-    border-radius: 50px;
+    border-radius: 20px;
 }
 
 .oneProductImage > div > img {
     width: 500px;
     height: 500px;
     object-fit: contain;
+}
+
+.oneProductPriceContainer {
+    grid-area: oneProductPriceContainer;
+    padding: 20px;
+    background-color: white;
+    border-radius: 20px;
+}
+
+.oneProductInfo {
+    grid-area: oneProductInfo;
+}
+
+.oneProductAddButton > input {
+    width: 100%;
+    height: 50px;
+    background-color: coral;
+    color: white;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    border: none;
+    border-color: coral;
+    font-weight: 500;
+    font-style: inherit;
+    font-family: inherit;
+}
+
+.oneProductAddButton > input:hover {
+    background-color: rgb(250, 151, 81);
+    box-shadow: rgb(112, 103, 81);
+    cursor: pointer;
+}
+
+.oneProductAddButton > input:active {
+    position: relative;
+    top: 3px;
+}
+
+.oneProductAddButton > .cartLink > a {
+    text-decoration: none;
+    width: 100%;
+    height: 50px;
+    background-color: rgb(9, 182, 9);
+    color: white;
+    font-size: 1.1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+.oneProductAddButton {
+    padding-top: 20px;
+}
+
+.oneProductAddButton > .cartLink > a:hover {
+    background-color: green;
+}
+
+.oneProductAddButton > .cartLink {
+    width: 100%;
+    height: 50px;
+}
+
+.oneProductPriceStyle {
+    font-size: 40px;
+    line-height: 40px;
+    font-weight: 600;
+    font-family: sans-serif;
+    /* user-select: text; */
+}
+
+.oneProductRatingStyle {
+    display: flex;
+    justify-content: left;
+    gap: 10px;
+}
+.oneProductRatingStyle div > span {
+    position: static;
+}
+
+.oneProductDescr {
+    font-size: 16px;
+    line-height: 23px;
+    font-family: sans-serif;
+    font-weight: 300;
+    color: rgb(21, 21, 40);
+}
+
+.oneProductInfo {
+    padding-left: 40px;
+    padding-right: 20px;
+    background-color: white;
+    border-radius: 20px;
 }
