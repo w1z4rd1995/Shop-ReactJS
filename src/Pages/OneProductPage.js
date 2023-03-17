@@ -2,19 +2,18 @@ import { useParams } from "react-router-dom";
 import { store } from "../Stores/AppStore";
 import Rating from "@mui/material/Rating";
 import ReactImageMagnify from "react-image-magnify";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { observer } from "mobx-react-lite";
 
 export const OneProductPage = observer(() => {
     const params = useParams();
     const productId = Number(params.productId);
-    console.log(productId);
+
     return (
         store.ApiData && (
             <div>
                 {store.ApiData.map((item) => {
                     if (item.id === productId) {
-                        console.log(item.rating);
                         return (
                             <div key={item.id} className="oneProductContainer">
                                 <div className="oneProductTitle">

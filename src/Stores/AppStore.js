@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, toJS } from "mobx";
 import axios from "axios";
 
 export class OneProductDescription {
@@ -34,9 +34,16 @@ export class AppStore {
     }
 
     ApiData = [];
+
     Categories = [];
+    categoryFilter = [];
+    filterProducts = [];
+    currentCategory = [];
+
     cartProduct = [];
+
     oneNewItem = {};
+
     IsReady = false;
 
     minPrice;
@@ -67,8 +74,50 @@ export class AppStore {
         const temp = this.ApiData.map((item) => item.category);
         this.Categories = [...new Set(temp)];
 
+        this.categoryFilter = this.Categories.map((category) => {
+            return { category, isSelected: false };
+        });
+
+        // this.filterProducts = [...this.ApiData];
+        // console.log(this.categoryFilter);
+
         store.findMinMaxPrice();
     };
+
+    setCategoryFilter(categoryItem) {
+        if (categoryItem.isSelected === false) {
+            this.categoryFilter = this.categoryFilter.map((item) => {
+                if (item.category === categoryItem.category) {
+                    return { ...item, isSelected: true };
+                } else return { ...item };
+            });
+        } else if (categoryItem.isSelected === true) {
+            this.categoryFilter = this.categoryFilter.map((item) => {
+                if (item.category === categoryItem.category) {
+                    return { ...item, isSelected: false };
+                } else return { ...item };
+            });
+        }
+
+        this.currentCategory = this.categoryFilter.filter(
+            (item) => item.isSelected === true
+        );
+
+        let tempFilterProduct = [];
+        this.currentCategory.map((item) => {
+            console.log(this.currentCategory);
+            // console.log(item);
+
+            this.ApiData.map((product) => {
+                if (item.category === product.category) {
+                    tempFilterProduct.push({ ...product });
+                    console.log(tempFilterProduct);
+                }
+                this.filterProducts = tempFilterProduct;
+                // console.log(tempFilterProduct);
+            });
+        });
+    }
 
     findMinMaxPrice() {
         const minPriceItem = this.ApiData.reduce((first, second) =>

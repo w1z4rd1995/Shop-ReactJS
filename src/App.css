@@ -414,12 +414,12 @@
 }
 
 .filters > div {
-    display: flex;
+    /* display: flex;
     align-items: center;
     justify-content: space-around;
     align-self: center;
     font-size: 1.2rem;
-    /* padding-bottom: 10px; */
+    padding-bottom: 10px; */
 }
 .inputMin,
 .inputMax {
@@ -704,8 +704,8 @@
 .oneProductDescr {
     font-size: 16px;
     line-height: 23px;
-    font-family: sans-serif;
-    font-weight: 300;
+    /* font-family: Arial, Helvetica, sans-serif; */
+    font-weight: 400;
     color: rgb(21, 21, 40);
 }
 
@@ -714,4 +714,5 @@
     padding-right: 20px;
     background-color: white;
     border-radius: 20px;
+    /* font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif; */
 }

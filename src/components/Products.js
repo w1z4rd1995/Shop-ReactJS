@@ -6,6 +6,7 @@ import { Checkbox } from "@mui/material";
 import Slider from "@mui/material/Slider";
 import { observer } from "mobx-react-lite";
 import { motion } from "framer-motion";
+import { makeAutoObservable, toJS } from "mobx";
 
 export const Products = observer(() => {
     const [isChecked, setIsChecked] = useState({
@@ -14,15 +15,9 @@ export const Products = observer(() => {
         rating: false,
     });
 
-    // const [sliderValueMin, setSliderValueMin] = useState(0);
     const [sliderValueChanged, setSliderValueChange] = useState([0, 1000]);
-    // console.log("123");
-
     const onSliderChange = (event, newValue) => {
         setSliderValueChange(newValue);
-        console.log(newValue);
-
-        console.log("changed mouseUp");
     };
 
     useEffect(() => {
@@ -38,9 +33,9 @@ export const Products = observer(() => {
             <div className="productContainer">
                 <div className="filters">
                     <div>
-                        <h4>Фильтры</h4>
+                        <h2>Фильтры</h2>
                     </div>
-                    <div>Цена</div>
+                    <h3>Цена</h3>
                     <div className="inputStyle"></div>
                     <div>
                         <div>от</div>
@@ -50,6 +45,7 @@ export const Products = observer(() => {
 
                     <div className="sliderStyle">
                         <Slider
+                            // color="black"
                             min={0}
                             max={1000}
                             defaultValue={[200, 500]}
@@ -60,13 +56,24 @@ export const Products = observer(() => {
                             onChangeCommitted={onSliderChange}
                         />
                     </div>
-                    {/* <div className="filterButtonStyle">
-                        <input
-                            className="filterButton"
-                            type="button"
-                            value="Применить"
-                        />
-                    </div> */}
+                    <div>
+                        <h3>Категория</h3>
+                        <div>
+                            {store.categoryFilter.map((item, i) => {
+                                return (
+                                    <div key={i}>
+                                        <Checkbox
+                                            checked={item.isSelected}
+                                            onChange={() => {
+                                                store.setCategoryFilter(item);
+                                            }}
+                                        />
+                                        {item.category}
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </div>
                 </div>
                 <div className="sorting">
                     Сортировать по:
@@ -120,7 +127,7 @@ export const Products = observer(() => {
                     </div>
                 </div>
                 <div className="products">
-                    {store.ApiData.map((item) => {
+                    {/* {store.ApiData.map((item) => {
                         return (item.price >= sliderValueChanged[0]) &
                             (item.price <= sliderValueChanged[1]) ? (
                             <motion.div
@@ -135,7 +142,15 @@ export const Products = observer(() => {
                         ) : (
                             ""
                         );
-                    })}
+                    })} */}
+                    {store.ApiData &&
+                        store.filterProducts.map((item) => {
+                            return (
+                                <div key={item.id}>
+                                    <OneProduct Item={item} />
+                                </div>
+                            );
+                        })}
                 </div>
             </div>
         )
