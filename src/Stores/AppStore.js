@@ -35,6 +35,8 @@ export class AppStore {
 
     ApiData = [];
 
+    allImages = [];
+
     Categories = [];
     categoryFilter = [];
     filterProducts = [];
@@ -51,6 +53,7 @@ export class AppStore {
 
     fetchData = async () => {
         const api_url = "https://fakestoreapi.com/products";
+        // const api_url = "https://api.escuelajs.co/api/v1/products";
         const response = await axios.get(api_url);
         const tempApiData = response.data;
 
@@ -72,6 +75,10 @@ export class AppStore {
         );
 
         const temp = this.ApiData.map((item) => item.category);
+
+        this.allImages = this.ApiData.map((item) => item.image);
+        // console.log(this.allImages);
+
         this.Categories = [...new Set(temp)];
 
         this.categoryFilter = this.Categories.map((category) => {
@@ -117,8 +124,13 @@ export class AppStore {
                 // console.log(tempFilterProduct);
             });
         });
+        console.log(this.ApiData);
+        console.log(this.filterProducts);
     }
 
+    setIsReady(value) {
+        store.IsReady = value;
+    }
     findMinMaxPrice() {
         const minPriceItem = this.ApiData.reduce((first, second) =>
             first.price > second.price ? second : first

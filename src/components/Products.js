@@ -24,7 +24,7 @@ export const Products = observer(() => {
         if (store.IsReady === false) {
             store.fetchData();
             console.log("зашел фетч");
-            store.IsReady = true;
+            store.setIsReady(true);
         }
     }, []);
     return (
@@ -127,30 +127,21 @@ export const Products = observer(() => {
                     </div>
                 </div>
                 <div className="products">
-                    {/* {store.ApiData.map((item) => {
-                        return (item.price >= sliderValueChanged[0]) &
-                            (item.price <= sliderValueChanged[1]) ? (
-                            <motion.div
-                                initial={{ opacity: 0 }}
-                                transition={{ duration: 0.5 }}
-                                animate={{ opacity: 1 }}
-                                exit={{ opacity: 0 }}
-                                key={item.id}
-                            >
-                                <OneProduct Item={item} />
-                            </motion.div>
-                        ) : (
-                            ""
-                        );
-                    })} */}
-                    {store.ApiData &&
-                        store.filterProducts.map((item) => {
-                            return (
-                                <div key={item.id}>
-                                    <OneProduct Item={item} />
-                                </div>
-                            );
-                        })}
+                    {store.ApiData && store.currentCategory.length !== 0
+                        ? store.filterProducts.map((item) => {
+                              return (
+                                  <div key={item.id}>
+                                      <OneProduct Item={item} />
+                                  </div>
+                              );
+                          })
+                        : store.ApiData.map((item) => {
+                              return (
+                                  <div key={item.id}>
+                                      <OneProduct Item={item} />
+                                  </div>
+                              );
+                          })}
                 </div>
             </div>
         )

@@ -716,3 +716,57 @@
     border-radius: 20px;
     /* font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif; */
 }
+
+.imageSlider {
+    /* display: flex; */
+    object-fit: contain;
+    width: 100%;
+    height: 600px;
+    align-self: center;
+    align-items: center;
+    /* padding-left: 20%; */
+    padding-top: 20px;
+}
+
+.imageSliderContainer {
+    width: 100%;
+    height: 750px;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+    border-radius: 20px;
+}
+
+.hui {
+    width: 750px;
+    height: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* .imageSliderContainer > .react-3d-carousel .slider-container .slider-right div {
+    border: none;
+}
+.imageSliderContainer > .react-3d-carousel .slider-container .slider-left div {
+    border: none;
+} */
+
+:where(.css-dev-only-do-not-override-ph9edi).ant-carousel
+    .slick-dots
+    li
+    button {
+    background: black;
+    height: 5px;
+    border-radius: 3px;
+    /* width: auto; */
+}
+
+:where(.css-dev-only-do-not-override-ph9edi).ant-carousel
+    .slick-dots
+    li.slick-active
+    button {
+    background: coral;
+}
