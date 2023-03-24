@@ -38,7 +38,15 @@ const App = observer(() => {
                     />
                 </Routes>
             </div>
-            <div className="footer">Footer</div>
+            <div className="footer">
+                <div className="footerContent">
+                    <NavLink to="/">Главная</NavLink>
+                    <NavLink to="/catalog">Каталог</NavLink>
+                    <NavLink to="/products">Все товары</NavLink>
+                    <NavLink to="/cart">Корзина</NavLink>
+                    <NavLink to="/contacts">Контакты</NavLink>
+                </div>
+            </div>
         </div>
     );
 });

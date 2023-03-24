@@ -5,20 +5,34 @@
         "header1 header1 header1 header1"
         "content1 content1 content1 content1"
         "footer1 footer1 footer1 footer1";
-    grid-template-rows: 150px 1fr 150px;
+    grid-template-rows: 150px 1fr 500px;
     grid-row-gap: 20px;
     grid-template-columns: 10% 1fr 1fr 10%;
     background-color: rgba(238, 238, 238, 0.432);
 }
 
-.header,
-.footer {
+.header {
     border: solid 1px black;
 }
 
 .footer {
+    margin-top: 50px;
+    color: white;
+    width: 100%;
+    height: auto;
+    /* height: 100%; */
+    /* position: absolute; */
+    bottom: 0px;
+    /* margin-top: 100px; */
+    /* position: absolute; */
+    /* flex: 0 0 auto; */
+    background-color: black;
     /* position: fixed;
     bottom: 0; */
+}
+
+.footerContent > a {
+    color: white;
 }
 .content {
     grid-area: content1;
@@ -769,4 +783,9 @@
     li.slick-active
     button {
     background: coral;
+}
+
+.css-187mznn-MuiSlider-root {
+    /* display: flex; */
+    color: coral !important;
 }

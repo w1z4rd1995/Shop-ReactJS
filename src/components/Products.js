@@ -7,6 +7,7 @@ import Slider from "@mui/material/Slider";
 import { observer } from "mobx-react-lite";
 import { motion } from "framer-motion";
 import { makeAutoObservable, toJS } from "mobx";
+import axios from "axios";
 
 export const Products = observer(() => {
     const [isChecked, setIsChecked] = useState({
@@ -15,7 +16,7 @@ export const Products = observer(() => {
         rating: false,
     });
 
-    const [sliderValueChanged, setSliderValueChange] = useState([0, 1000]);
+    const [sliderValueChange, setSliderValueChange] = useState([]);
     const onSliderChange = (event, newValue) => {
         setSliderValueChange(newValue);
     };
@@ -26,7 +27,11 @@ export const Products = observer(() => {
             console.log("зашел фетч");
             store.setIsReady(true);
         }
-    }, []);
+        console.log(store.minPrice);
+        setSliderValueChange([store.minPrice, store.maxPrice]);
+    }, [store.minPrice]);
+    // console.log(sliderValueChange);
+
     return (
         store.IsReady &&
         store.ApiData && (
@@ -44,17 +49,19 @@ export const Products = observer(() => {
                     </div>
 
                     <div className="sliderStyle">
-                        <Slider
-                            // color="black"
-                            min={0}
-                            max={1000}
-                            defaultValue={[200, 500]}
-                            // value={setValue}
-                            valueLabelDisplay="auto"
-                            disableSwap
-                            step={5}
-                            onChangeCommitted={onSliderChange}
-                        />
+                        {store.minPrice && store.maxPrice && (
+                            <Slider
+                                // color="black"
+                                min={store.minPrice}
+                                max={store.maxPrice}
+                                defaultValue={[store.minPrice, store.maxPrice]}
+                                // value={setValue}
+                                valueLabelDisplay="auto"
+                                disableSwap
+                                step={5}
+                                onChangeCommitted={onSliderChange}
+                            />
+                        )}
                     </div>
                     <div>
                         <h3>Категория</h3>
@@ -129,18 +136,27 @@ export const Products = observer(() => {
                 <div className="products">
                     {store.ApiData && store.currentCategory.length !== 0
                         ? store.filterProducts.map((item) => {
-                              return (
-                                  <div key={item.id}>
-                                      <OneProduct Item={item} />
-                                  </div>
-                              );
+                              if (
+                                  item.price > sliderValueChange[0] &&
+                                  item.price < sliderValueChange[1]
+                              )
+                                  return (
+                                      <div key={item.id}>
+                                          <OneProduct Item={item} />
+                                      </div>
+                                  );
                           })
                         : store.ApiData.map((item) => {
-                              return (
-                                  <div key={item.id}>
-                                      <OneProduct Item={item} />
-                                  </div>
-                              );
+                              if (
+                                  item.price > sliderValueChange[0] &&
+                                  item.price < sliderValueChange[1]
+                              ) {
+                                  return (
+                                      <div key={item.id}>
+                                          <OneProduct Item={item} />
+                                      </div>
+                                  );
+                              }
                           })}
                 </div>
             </div>
