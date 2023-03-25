@@ -789,3 +789,8 @@
     /* display: flex; */
     color: coral !important;
 }
+
+.css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.Mui-checked,
+.css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.MuiCheckbox-indeterminate {
+    color: coral !important;
+}

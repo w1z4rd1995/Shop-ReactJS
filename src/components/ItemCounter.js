@@ -29,6 +29,7 @@ export const ItemCounter = observer((props) => {
 
         if (counter === 0) {
             store.deleteCartItem(props.Id);
+            store.setCategoryFilter(props.Item);
         }
     };
 

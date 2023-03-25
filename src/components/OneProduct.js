@@ -4,7 +4,7 @@ import { store } from "../Stores/AppStore";
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 
-export const OneProduct = observer((props) => {
+const OneProduct = observer((props) => {
     // const [quantity, setQuantity] = useState(0);
 
     return (
@@ -34,6 +34,7 @@ export const OneProduct = observer((props) => {
                         value="В корзину"
                         onClick={() => {
                             store.addCart(props.Item.id);
+                            store.setCategoryFilter(props.Item);
                         }}
                     ></input>
                 ) : (
@@ -45,3 +46,4 @@ export const OneProduct = observer((props) => {
         </div>
     );
 });
+export default OneProduct;

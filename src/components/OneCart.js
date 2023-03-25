@@ -24,6 +24,7 @@ export const OneCart = observer((props) => {
 
             <div className="cartItemQuantity">
                 <ItemCounter
+                    Item={props.Item}
                     Id={props.Item.id}
                     Quantity={props.Item.cartQuantity}
                 />
@@ -40,6 +41,7 @@ export const OneCart = observer((props) => {
                     onClick={() => {
                         console.log("delete");
                         store.deleteCartItem(props.Item.id);
+                        store.setCategoryFilter(props.Item);
                     }}
                 />
             </div>

@@ -32,10 +32,10 @@ const App = observer(() => {
 
                     <Route path="/cart" element={<Cart />} />
 
-                    <Route
+                    {/* <Route
                         path="/catalog/:categoryName"
                         element={<CategoryProducts />}
-                    />
+                    /> */}
                 </Routes>
             </div>
             <div className="footer">

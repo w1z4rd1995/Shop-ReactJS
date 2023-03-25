@@ -1,13 +1,16 @@
 // import { useParams } from "react-router-dom";
 import { store } from "../Stores/AppStore";
-import { OneProduct } from "../components/OneProduct";
+// import { OneProduct } from "../components/OneProduct";
+
 import { useEffect, useState } from "react";
 import { Checkbox } from "@mui/material";
 import Slider from "@mui/material/Slider";
 import { observer } from "mobx-react-lite";
-import { motion } from "framer-motion";
-import { makeAutoObservable, toJS } from "mobx";
-import axios from "axios";
+// import { motion } from "framer-motion";
+// import { makeAutoObservable, toJS } from "mobx";
+// import axios from "axios";
+import React, { lazy, Suspense } from "react";
+const OneProduct = lazy(() => import("../components/OneProduct"));
 
 export const Products = observer(() => {
     const [isChecked, setIsChecked] = useState({
@@ -134,30 +137,36 @@ export const Products = observer(() => {
                     </div>
                 </div>
                 <div className="products">
-                    {store.ApiData && store.currentCategory.length !== 0
-                        ? store.filterProducts.map((item) => {
-                              if (
-                                  item.price > sliderValueChange[0] &&
-                                  item.price < sliderValueChange[1]
-                              )
-                                  return (
-                                      <div key={item.id}>
-                                          <OneProduct Item={item} />
-                                      </div>
-                                  );
-                          })
-                        : store.ApiData.map((item) => {
-                              if (
-                                  item.price > sliderValueChange[0] &&
-                                  item.price < sliderValueChange[1]
-                              ) {
-                                  return (
-                                      <div key={item.id}>
-                                          <OneProduct Item={item} />
-                                      </div>
-                                  );
-                              }
-                          })}
+                    <>
+                        {store.ApiData && store.currentCategory.length !== 0
+                            ? store.filterProducts.map((item) => {
+                                  if (
+                                      item.price > sliderValueChange[0] &&
+                                      item.price < sliderValueChange[1]
+                                  )
+                                      return (
+                                          <div key={item.id}>
+                                              <OneProduct Item={item} />
+                                          </div>
+                                      );
+                              })
+                            : store.ApiData.map((item) => {
+                                  if (
+                                      item.price > sliderValueChange[0] &&
+                                      item.price < sliderValueChange[1]
+                                  ) {
+                                      return (
+                                          <div key={item.id}>
+                                              <Suspense
+                                                  fallback={<h1>Loading…</h1>}
+                                              >
+                                                  <OneProduct Item={item} />
+                                              </Suspense>
+                                          </div>
+                                      );
+                                  }
+                              })}
+                    </>
                 </div>
             </div>
         )
