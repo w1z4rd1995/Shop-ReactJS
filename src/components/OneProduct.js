@@ -4,7 +4,7 @@ import { store } from "../Stores/AppStore";
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 
-const OneProduct = observer((props) => {
+export const OneProduct = observer((props) => {
     // const [quantity, setQuantity] = useState(0);
 
     return (
@@ -46,4 +46,3 @@ const OneProduct = observer((props) => {
         </div>
     );
 });
-export default OneProduct;

@@ -1,16 +1,11 @@
 // import { useParams } from "react-router-dom";
 import { store } from "../Stores/AppStore";
-// import { OneProduct } from "../components/OneProduct";
-
+import { OneProduct } from "../components/OneProduct";
 import { useEffect, useState } from "react";
 import { Checkbox } from "@mui/material";
 import Slider from "@mui/material/Slider";
 import { observer } from "mobx-react-lite";
-// import { motion } from "framer-motion";
-// import { makeAutoObservable, toJS } from "mobx";
-// import axios from "axios";
-import React, { lazy, Suspense } from "react";
-const OneProduct = lazy(() => import("../components/OneProduct"));
+import CircularProgress from "@mui/material/CircularProgress";
 
 export const Products = observer(() => {
     const [isChecked, setIsChecked] = useState({
@@ -22,6 +17,18 @@ export const Products = observer(() => {
     const [sliderValueChange, setSliderValueChange] = useState([]);
     const onSliderChange = (event, newValue) => {
         setSliderValueChange(newValue);
+        loadingHandler();
+    };
+
+    const [isLoading, setIsLoading] = useState(false);
+
+    const loadingHandler = () => {
+        if (isLoading === false) {
+            setIsLoading(true);
+            setTimeout(() => {
+                setIsLoading(false);
+            }, 500);
+        }
     };
 
     useEffect(() => {
@@ -75,6 +82,7 @@ export const Products = observer(() => {
                                         <Checkbox
                                             checked={item.isSelected}
                                             onChange={() => {
+                                                loadingHandler();
                                                 store.setCategoryFilter(item);
                                             }}
                                         />
@@ -91,6 +99,7 @@ export const Products = observer(() => {
                         <Checkbox
                             checked={isChecked.price}
                             onChange={() => {
+                                loadingHandler();
                                 if (!isChecked.price) {
                                     store.sortingByPrice();
                                 }
@@ -107,6 +116,7 @@ export const Products = observer(() => {
                         <Checkbox
                             checked={isChecked.name}
                             onChange={() => {
+                                loadingHandler();
                                 setIsChecked({
                                     name: !isChecked.name,
                                     price: false,
@@ -123,6 +133,7 @@ export const Products = observer(() => {
                         <Checkbox
                             checked={isChecked.rating}
                             onChange={() => {
+                                loadingHandler();
                                 setIsChecked({
                                     rating: !isChecked.rating,
                                     name: false,
@@ -136,37 +147,41 @@ export const Products = observer(() => {
                         Рейтингу
                     </div>
                 </div>
-                <div className="products">
-                    <>
-                        {store.ApiData && store.currentCategory.length !== 0
-                            ? store.filterProducts.map((item) => {
-                                  if (
-                                      item.price > sliderValueChange[0] &&
-                                      item.price < sliderValueChange[1]
-                                  )
-                                      return (
-                                          <div key={item.id}>
-                                              <OneProduct Item={item} />
-                                          </div>
-                                      );
-                              })
-                            : store.ApiData.map((item) => {
-                                  if (
-                                      item.price > sliderValueChange[0] &&
-                                      item.price < sliderValueChange[1]
-                                  ) {
-                                      return (
-                                          <div key={item.id}>
-                                              <Suspense
-                                                  fallback={<h1>Loading…</h1>}
-                                              >
+                <div className="productsList">
+                    {isLoading === false ? (
+                        <div className="products">
+                            {store.ApiData && store.currentCategory.length !== 0
+                                ? store.filterProducts.map((item) => {
+                                      if (
+                                          item.price > sliderValueChange[0] &&
+                                          item.price < sliderValueChange[1]
+                                      )
+                                          return (
+                                              <div key={item.id}>
                                                   <OneProduct Item={item} />
-                                              </Suspense>
-                                          </div>
-                                      );
-                                  }
-                              })}
-                    </>
+                                              </div>
+                                          );
+                                  })
+                                : store.ApiData.map((item) => {
+                                      if (
+                                          item.price > sliderValueChange[0] &&
+                                          item.price < sliderValueChange[1]
+                                      ) {
+                                          return (
+                                              <div key={item.id}>
+                                                  <OneProduct Item={item} />
+                                              </div>
+                                          );
+                                      }
+                                  })}
+                        </div>
+                    ) : (
+                        <div className="loadingStyle">
+                            <CircularProgress
+                                style={{ width: 70, height: 70 }}
+                            />
+                        </div>
+                    )}
                 </div>
             </div>
         )

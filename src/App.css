@@ -105,9 +105,9 @@
     display: grid;
     grid-template-areas:
         ". sort sort"
-        "filter products products"
-        ". products products"
-        ". products products";
+        "filter productsList productsList"
+        ". productsList productsList"
+        ". productsList productsList";
 
     grid-row-gap: 40px;
     grid-column-gap: 30px;
@@ -122,6 +122,9 @@
     box-shadow: 0 0 10px 2px rgba(221, 221, 221, 1);
 }
 
+.productsList {
+    grid-area: productsList;
+}
 .sorting {
     grid-area: sort;
     display: flex;
@@ -792,5 +795,18 @@
 
 .css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.Mui-checked,
 .css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.MuiCheckbox-indeterminate {
+    color: coral !important;
+}
+
+.loadingStyle {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.css-18lrjg1-MuiCircularProgress-root {
     color: coral !important;
 }
