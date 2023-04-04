@@ -20,19 +20,56 @@
     color: white;
     width: 100%;
     height: auto;
-    /* height: 100%; */
-    /* position: absolute; */
     bottom: 0px;
-    /* margin-top: 100px; */
-    /* position: absolute; */
-    /* flex: 0 0 auto; */
     background-color: black;
-    /* position: fixed;
-    bottom: 0; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
-.footerContent > a {
+.footerContent {
+    width: 90%;
+    height: 90%;
     color: white;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 2fr;
+    grid-template-rows: 1fr auto auto;
+    grid-template-areas:
+        "footerLogo footerPages footerButton footerLocation"
+        "footerIcons footerIcons footerIcons footerIcons"
+        "footerText footerText footerText footerText";
+    border-bottom: solid 1px rgba(255, 255, 255, 0.26);
+}
+
+.footerPages {
+    grid-area: footerPages;
+}
+.footerButton {
+    grid-area: footerButton;
+}
+.footerLocation {
+    grid-area: footerLocation;
+}
+.footerIcons {
+    grid-area: footerIcons;
+    display: flex;
+    justify-content: center;
+}
+.footerText {
+    grid-area: footerText;
+}
+.footerLogo {
+    grid-area: footerLogo;
+}
+
+.footerMoreInfo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 20px;
 }
 .content {
     grid-area: content1;
@@ -809,4 +846,144 @@
 
 .css-18lrjg1-MuiCircularProgress-root {
     color: coral !important;
+}
+
+.footerPages {
+    padding-top: 20px;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+}
+
+.footerPages > div > a {
+    text-decoration: none;
+    color: white;
+    /* padding-bottom: 15px; */
+}
+.footerNav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+.logoStyle {
+    object-fit: contain;
+    width: 100%;
+}
+
+.footerLogo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footerButton {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.footerButtonStyle {
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+    color: #fff;
+    font-size: 20px;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: sans-serif;
+    box-sizing: border-box;
+    background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+    background-size: 400%;
+    border-radius: 30px;
+    z-index: 1;
+}
+
+.footerButtonStyle:hover {
+    animation: animate 8s linear infinite;
+}
+
+@keyframes animate {
+    0% {
+        background-position: 0%;
+    }
+    100% {
+        background-position: 400%;
+    }
+}
+
+.footerButtonStyle:before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    bottom: -5px;
+    left: -5px;
+    z-index: -1;
+    background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+    background-size: 400%;
+    border-radius: 40px;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.footerButtonStyle:hover:before {
+    filter: blur(20px);
+    opacity: 1;
+    animation: animate 8s linear infinite;
+}
+
+.footerContacts {
+    padding-top: 20px;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+}
+
+.footerLocation {
+    /* padding-left: 10px; */
+    display: flex;
+    align-items: center;
+    /* justify-content: space-evenly; */
+    flex-direction: row;
+}
+
+.footerLocation > div {
+    /* text-align: left; */
+}
+
+.footerPhone {
+    display: flex;
+    align-items: center;
+    /* justify-content: space-evenly; */
+    flex-direction: row;
+}
+
+.footerPhone > div {
+    /* text-align: left; */
+}
+
+.footerMail {
+    display: flex;
+    align-items: center;
+    /* justify-content: space-evenly; */
+    flex-direction: row;
+}
+
+.footerMail > div {
+}
+
+.footerContactsInfo {
+    display: flex;
+    justify-content: center;
+    align-items: left;
+    flex-direction: column;
+    gap: 20px;
 }
