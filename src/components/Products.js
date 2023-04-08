@@ -48,48 +48,62 @@ export const Products = observer(() => {
             <div className="productContainer">
                 <div className="filters">
                     <div>
-                        <h2>Фильтры</h2>
-                    </div>
-                    <h3>Цена</h3>
-                    <div className="inputStyle"></div>
-                    <div>
-                        <div>от</div>
-
-                        <div>до</div>
-                    </div>
-
-                    <div className="sliderStyle">
-                        {store.minPrice && store.maxPrice && (
-                            <Slider
-                                // color="black"
-                                min={store.minPrice}
-                                max={store.maxPrice}
-                                defaultValue={[store.minPrice, store.maxPrice]}
-                                // value={setValue}
-                                valueLabelDisplay="auto"
-                                disableSwap
-                                step={5}
-                                onChangeCommitted={onSliderChange}
-                            />
-                        )}
-                    </div>
-                    <div>
-                        <h3>Категория</h3>
                         <div>
-                            {store.categoryFilter.map((item, i) => {
-                                return (
-                                    <div key={i}>
-                                        <Checkbox
-                                            checked={item.isSelected}
-                                            onChange={() => {
-                                                loadingHandler();
-                                                store.setCategoryFilter(item);
-                                            }}
-                                        />
-                                        {item.category}
-                                    </div>
-                                );
-                            })}
+                            <h2>Фильтры</h2>{" "}
+                        </div>
+
+                        <div>
+                            <div>
+                                <h3>Цена</h3>
+                            </div>
+                            <div className="inputStyle"></div>
+
+                            <div className="sliderStyle">
+                                {store.minPrice && store.maxPrice && (
+                                    <Slider
+                                        // color="black"
+                                        min={store.minPrice}
+                                        max={store.maxPrice}
+                                        defaultValue={[
+                                            store.minPrice,
+                                            store.maxPrice,
+                                        ]}
+                                        // value={setValue}
+                                        valueLabelDisplay="auto"
+                                        disableSwap
+                                        step={5}
+                                        onChangeCommitted={onSliderChange}
+                                    />
+                                )}
+                            </div>
+                            <div>
+                                <div>
+                                    {sliderValueChange[0]} -{" "}
+                                    {sliderValueChange[1]}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h3>Категория</h3>
+                            <div>
+                                {store.categoryFilter.map((item, i) => {
+                                    return (
+                                        <div key={i}>
+                                            <Checkbox
+                                                checked={item.isSelected}
+                                                onChange={() => {
+                                                    loadingHandler();
+                                                    store.setCategoryFilter(
+                                                        item
+                                                    );
+                                                }}
+                                            />
+                                            {item.category}
+                                        </div>
+                                    );
+                                })}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -153,8 +167,8 @@ export const Products = observer(() => {
                             {store.ApiData && store.currentCategory.length !== 0
                                 ? store.filterProducts.map((item) => {
                                       if (
-                                          item.price > sliderValueChange[0] &&
-                                          item.price < sliderValueChange[1]
+                                          item.price >= sliderValueChange[0] &&
+                                          item.price <= sliderValueChange[1]
                                       )
                                           return (
                                               <div key={item.id}>
@@ -164,8 +178,8 @@ export const Products = observer(() => {
                                   })
                                 : store.ApiData.map((item) => {
                                       if (
-                                          item.price > sliderValueChange[0] &&
-                                          item.price < sliderValueChange[1]
+                                          item.price >= sliderValueChange[0] &&
+                                          item.price <= sliderValueChange[1]
                                       ) {
                                           return (
                                               <div key={item.id}>

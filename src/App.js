@@ -20,11 +20,21 @@ const App = observer(() => {
     return (
         <div className="container">
             <div className="header">
-                <NavLink to="/">Главная</NavLink>
-                <NavLink to="/catalog">Каталог</NavLink>
-                <NavLink to="/products">Все товары</NavLink>
-                <NavLink to="/cart">Корзина</NavLink>
-                <NavLink to="/contacts">Контакты</NavLink>
+                <div>
+                    <div>
+                        <NavLink to="/">Главная</NavLink>
+                    </div>
+
+                    <div>
+                        <NavLink to="/products">Все товары</NavLink>
+                    </div>
+                    <div>
+                        <NavLink to="/cart">Корзина</NavLink>
+                    </div>
+                    <div>
+                        <NavLink to="/contacts">Контакты</NavLink>
+                    </div>
+                </div>
             </div>
             <div className="content">
                 <Routes>

@@ -51,6 +51,8 @@ export class AppStore {
     minPrice;
     maxPrice;
 
+    users = [];
+
     fetchData = async () => {
         const api_url = "https://fakestoreapi.com/products";
 
@@ -87,6 +89,13 @@ export class AppStore {
         if (this.ApiData) {
             store.findMinMaxPrice();
         }
+    };
+
+    fetchDataUsers = async () => {
+        const api_url = "https://reqres.in/api/users";
+        const response = await axios.get(api_url);
+        this.users = response.data.data;
+        console.log(this.users);
     };
 
     setCategoryFilter(categoryItem) {

@@ -5,14 +5,14 @@
         "header1 header1 header1 header1"
         "content1 content1 content1 content1"
         "footer1 footer1 footer1 footer1";
-    grid-template-rows: 150px 1fr 500px;
+    grid-template-rows: 100px 1fr 500px;
     grid-row-gap: 20px;
     grid-template-columns: 10% 1fr 1fr 10%;
     background-color: rgba(238, 238, 238, 0.432);
 }
 
 .header {
-    border: solid 1px black;
+    /* border: solid 1px black; */
 }
 
 .footer {
@@ -90,7 +90,15 @@
     grid-area: footer1;
 }
 
-.header > a {
+.header > div {
+    width: auto;
+    height: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header > div > div > a {
     font-size: 1.5rem;
     padding-left: 20px;
     padding-right: 20px;
@@ -98,10 +106,10 @@
     text-decoration: none;
 }
 
-.header > a:hover {
+.header > div > div > a:hover {
     text-decoration: underline;
 }
-.header > a.active {
+.header > div > div > a.active {
     color: rgb(18, 179, 179);
     cursor: default;
 }
@@ -863,8 +871,8 @@
 }
 .footerNav {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: left; */
+    /* align-items: center; */
     flex-direction: column;
     gap: 20px;
 }
@@ -905,7 +913,7 @@
     z-index: 1;
 }
 
-.footerButtonStyle:hover {
+.footerButtonStyle {
     animation: animate 8s linear infinite;
 }
 
@@ -933,7 +941,7 @@
     transition: 0.5s;
 }
 
-.footerButtonStyle:hover:before {
+.footerButtonStyle:before {
     filter: blur(20px);
     opacity: 1;
     animation: animate 8s linear infinite;
@@ -986,4 +994,63 @@
     align-items: left;
     flex-direction: column;
     gap: 20px;
+}
+
+.contactsContainer {
+    display: grid;
+    grid-template-areas:
+        "users users users users"
+        "map map map map"
+        "addresses feedback feedback feedback ";
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    grid-row-gap: 50px;
+}
+
+.users {
+    grid-area: users;
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+}
+.map {
+    grid-area: map;
+}
+.addresses {
+    grid-area: addresses;
+}
+.feedback {
+    grid-area: feedback;
+}
+
+.userContainer {
+    min-width: 170px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.userAvatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.userAvatar > img {
+    object-fit: contain;
+    border-radius: 64px;
+}
+
+.map {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.map > img {
+    object-fit: contain;
+    width: 70%;
+    height: auto;
 }
