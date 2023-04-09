@@ -6,6 +6,7 @@ import streetMap from "../components/images/StreetMap.PNG";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import CallIcon from "@mui/icons-material/Call";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
+import { FeedBack } from "../components/FeedBack";
 
 export const Contacts = observer(() => {
     useEffect(() => {
@@ -31,31 +32,28 @@ export const Contacts = observer(() => {
                 </div>
                 <div className="addresses">
                     <div>
-                        <div>
-                            <h2>Адрес</h2>
+                        <h2>Адрес</h2>
+                    </div>
+                    <div className="footerContactsInfo">
+                        <div className="footerLocation">
+                            <div>
+                                <LocationOnIcon />
+                            </div>
+                            <div>
+                                123456, Россия, г. Москва, ул. Степанова, д. 100{" "}
+                            </div>
                         </div>
-                        <div className="footerContactsInfo">
-                            <div className="footerLocation">
-                                <div>
-                                    <LocationOnIcon />
-                                </div>
-                                <div>
-                                    123456, Россия, г. Москва, ул. Степанова, д.
-                                    100{" "}
-                                </div>
+                        <div className="footerPhone">
+                            <div>
+                                <CallIcon />
                             </div>
-                            <div className="footerPhone">
-                                <div>
-                                    <CallIcon />
-                                </div>
-                                <div>+7(495)4958800</div>
+                            <div>+7(495)4958800</div>
+                        </div>
+                        <div className="footerMail">
+                            <div>
+                                <MailOutlineIcon />
                             </div>
-                            <div className="footerMail">
-                                <div>
-                                    <MailOutlineIcon />
-                                </div>
-                                <div>sobaka@mail.ru</div>
-                            </div>
+                            <div>sobaka@mail.ru</div>
                         </div>
                     </div>
                 </div>
@@ -63,6 +61,9 @@ export const Contacts = observer(() => {
                     <div>
                         <div>
                             <h2>Обратная связь</h2>
+                        </div>
+                        <div>
+                            <FeedBack />
                         </div>
                     </div>
                 </div>
