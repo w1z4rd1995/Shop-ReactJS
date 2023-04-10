@@ -34,24 +34,20 @@ export class AppStore {
     }
 
     ApiData = [];
-
     allImages = [];
-
     Categories = [];
     categoryFilter = [];
     filterProducts = [];
     currentCategory = [];
-
     cartProduct = [];
-
+    users = [];
     oneNewItem = {};
 
     IsReady = false;
-
+    isChecked = { price: false, name: false, rating: false };
+    currentSorting = [];
     minPrice;
     maxPrice;
-
-    users = [];
 
     fetchData = async () => {
         const api_url = "https://fakestoreapi.com/products";
@@ -119,18 +115,42 @@ export class AppStore {
 
         let tempFilterProduct = [];
         this.currentCategory.map((item) => {
-            // console.log(item);
-
             this.ApiData.map((product) => {
                 if (item.category === product.category) {
                     tempFilterProduct.push({ ...product });
                 }
                 this.filterProducts = tempFilterProduct;
-                // console.log(tempFilterProduct);
             });
         });
     }
+    setIsChecked(sortingName, value) {
+        this.currentSorting = [];
+        if (sortingName === "price") {
+            this.isChecked = { price: value, name: false, rating: false };
+            this.currentSorting.push("price");
+        }
 
+        if (sortingName === "name") {
+            this.isChecked = { price: false, name: value, rating: false };
+            this.currentSorting.push("name");
+        }
+        if (sortingName === "rating") {
+            this.isChecked = { price: false, name: false, rating: value };
+            this.currentSorting.push("rating");
+        }
+    }
+
+    chooseSorting() {
+        if (this.currentSorting[0] === "price") {
+            this.sortingByPrice();
+        }
+        if (this.currentSorting[0] === "name") {
+            this.sortingByName();
+        }
+        if (this.currentSorting[0] === "rating") {
+            this.sortingByRating();
+        }
+    }
     setIsReady(value) {
         store.IsReady = value;
     }

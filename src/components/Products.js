@@ -8,12 +8,6 @@ import { observer } from "mobx-react-lite";
 import CircularProgress from "@mui/material/CircularProgress";
 
 export const Products = observer(() => {
-    const [isChecked, setIsChecked] = useState({
-        price: false,
-        name: false,
-        rating: false,
-    });
-
     const [sliderValueChange, setSliderValueChange] = useState([]);
     const onSliderChange = (event, newValue) => {
         setSliderValueChange(newValue);
@@ -48,61 +42,64 @@ export const Products = observer(() => {
             <div className="productContainer">
                 <div className="filters">
                     <div>
-                        <div>
+                        <div className="filtersHeader">
                             <h2>Фильтры</h2>{" "}
                         </div>
 
-                        <div>
+                        <div className="allFilters">
                             <div>
-                                <h3>Цена</h3>
-                            </div>
-                            <div className="inputStyle"></div>
+                                <div className="priceHeader">
+                                    <h3>Цена</h3>
+                                </div>
+                                <div className="inputStyle"></div>
 
-                            <div className="sliderStyle">
-                                {store.minPrice && store.maxPrice && (
-                                    <Slider
-                                        // color="black"
-                                        min={store.minPrice}
-                                        max={store.maxPrice}
-                                        defaultValue={[
-                                            store.minPrice,
-                                            store.maxPrice,
-                                        ]}
-                                        // value={setValue}
-                                        valueLabelDisplay="auto"
-                                        disableSwap
-                                        step={5}
-                                        onChangeCommitted={onSliderChange}
-                                    />
-                                )}
-                            </div>
-                            <div>
-                                <div>
-                                    {sliderValueChange[0]} -{" "}
-                                    {sliderValueChange[1]}
+                                <div className="sliderStyle">
+                                    {store.minPrice && store.maxPrice && (
+                                        <Slider
+                                            // color="black"
+                                            min={store.minPrice}
+                                            max={store.maxPrice}
+                                            defaultValue={[
+                                                store.minPrice,
+                                                store.maxPrice,
+                                            ]}
+                                            // value={setValue}
+                                            valueLabelDisplay="auto"
+                                            disableSwap
+                                            step={5}
+                                            onChangeCommitted={onSliderChange}
+                                        />
+                                    )}
+                                </div>
+                                <div className="minMaxPrices">
+                                    {sliderValueChange[0]} $ -{" "}
+                                    {sliderValueChange[1]} $
                                 </div>
                             </div>
-                        </div>
 
-                        <div>
-                            <h3>Категория</h3>
                             <div>
-                                {store.categoryFilter.map((item, i) => {
-                                    return (
-                                        <div key={i}>
-                                            <Checkbox
-                                                checked={item.isSelected}
-                                                onChange={() => {
-                                                    loadingHandler();
-                                                    store.setCategoryFilter(
-                                                        item
-                                                    );
-                                                }}
-                                            />
-                                            {item.category}
-                                        </div>
-                                    );
-                                })}
+                                <div className="categoryHeader">
+                                    <h3>Категория</h3>{" "}
+                                </div>
+                                <div className="filtersCategoryItem">
+                                    {store.categoryFilter.map((item, i) => {
+                                        return (
+                                            <div key={i}>
+                                                <Checkbox
+                                                    checked={item.isSelected}
+                                                    onChange={() => {
+                                                        loadingHandler();
+                                                        store.setCategoryFilter(
+                                                            item
+                                                        );
+                                                        store.chooseSorting();
+                                                    }}
+                                                />
+                                                {item.category}
+                                            </div>
+                                        );
+                                    })}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -111,51 +108,39 @@ export const Products = observer(() => {
                     Сортировать по:
                     <div>
                         <Checkbox
-                            checked={isChecked.price}
+                            checked={store.isChecked.price}
                             onChange={() => {
                                 loadingHandler();
-                                if (!isChecked.price) {
+                                if (store.isChecked.price === false) {
+                                    store.setIsChecked("price", true);
                                     store.sortingByPrice();
-                                }
-                                setIsChecked({
-                                    price: !isChecked.price,
-                                    name: false,
-                                    rating: false,
-                                });
+                                } else store.setIsChecked("price", false);
                             }}
                         />
                         Цене
                     </div>
                     <div>
                         <Checkbox
-                            checked={isChecked.name}
+                            checked={store.isChecked.name}
                             onChange={() => {
                                 loadingHandler();
-                                setIsChecked({
-                                    name: !isChecked.name,
-                                    price: false,
-                                    rating: false,
-                                });
-                                if (!isChecked.name) {
+                                if (store.isChecked.name === false) {
+                                    store.setIsChecked("name", true);
                                     store.sortingByName();
-                                }
+                                } else store.setIsChecked("name", false);
                             }}
                         />
                         Наименованию
                     </div>
                     <div>
                         <Checkbox
-                            checked={isChecked.rating}
+                            checked={store.isChecked.rating}
                             onChange={() => {
                                 loadingHandler();
-                                setIsChecked({
-                                    rating: !isChecked.rating,
-                                    name: false,
-                                    price: false,
-                                });
-                                if (!isChecked.rating) {
+                                if (store.isChecked.rating === false) {
+                                    store.setIsChecked("rating", true);
                                     store.sortingByRating();
-                                }
+                                } else store.setIsChecked("rating", false);
                             }}
                         />
                         Рейтингу

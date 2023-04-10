@@ -73,7 +73,9 @@ const App = observer(() => {
                         </div>
                     </div>
                     <div className="footerButton">
-                        <a className="footerButtonStyle">Связаться с нами </a>
+                        <NavLink to="/contacts" className="footerButtonStyle">
+                            Связаться с нами{" "}
+                        </NavLink>
                     </div>
                     <div className="footerContacts">
                         <div>
