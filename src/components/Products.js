@@ -6,6 +6,7 @@ import { Checkbox } from "@mui/material";
 import Slider from "@mui/material/Slider";
 import { observer } from "mobx-react-lite";
 import CircularProgress from "@mui/material/CircularProgress";
+import { ChooseProductList } from "./ChooseProductList";
 
 export const Products = observer(() => {
     const [sliderValueChange, setSliderValueChange] = useState([]);
@@ -24,6 +25,7 @@ export const Products = observer(() => {
             }, 500);
         }
     };
+    console.log("123");
 
     useEffect(() => {
         if (store.IsReady === false) {
@@ -31,10 +33,8 @@ export const Products = observer(() => {
             console.log("зашел фетч");
             store.setIsReady(true);
         }
-        console.log(store.minPrice);
         setSliderValueChange([store.minPrice, store.maxPrice]);
     }, [store.minPrice]);
-    // console.log(sliderValueChange);
 
     return (
         store.IsReady &&
@@ -149,30 +149,7 @@ export const Products = observer(() => {
                 <div className="productsList">
                     {isLoading === false ? (
                         <div className="products">
-                            {store.ApiData && store.currentCategory.length !== 0
-                                ? store.filterProducts.map((item) => {
-                                      if (
-                                          item.price >= sliderValueChange[0] &&
-                                          item.price <= sliderValueChange[1]
-                                      )
-                                          return (
-                                              <div key={item.id}>
-                                                  <OneProduct Item={item} />
-                                              </div>
-                                          );
-                                  })
-                                : store.ApiData.map((item) => {
-                                      if (
-                                          item.price >= sliderValueChange[0] &&
-                                          item.price <= sliderValueChange[1]
-                                      ) {
-                                          return (
-                                              <div key={item.id}>
-                                                  <OneProduct Item={item} />
-                                              </div>
-                                          );
-                                      }
-                                  })}
+                            <ChooseProductList />
                         </div>
                     ) : (
                         <div className="loadingStyle">

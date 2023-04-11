@@ -37,6 +37,7 @@ export class AppStore {
     allImages = [];
     Categories = [];
     categoryFilter = [];
+    sortingData = [];
     filterProducts = [];
     currentCategory = [];
     cartProduct = [];
@@ -73,25 +74,20 @@ export class AppStore {
         );
 
         const temp = this.ApiData.map((item) => item.category);
-
         this.allImages = this.ApiData.map((item) => item.image);
-
         this.Categories = [...new Set(temp)];
-
         this.categoryFilter = this.Categories.map((category) => {
             return { category, isSelected: false };
         });
+        this.sortingData = [...this.ApiData];
 
-        if (this.ApiData) {
-            store.findMinMaxPrice();
-        }
+        store.findMinMaxPrice();
     };
 
     fetchDataUsers = async () => {
         const api_url = "https://reqres.in/api/users";
         const response = await axios.get(api_url);
         this.users = response.data.data;
-        console.log(this.users);
     };
 
     setCategoryFilter(categoryItem) {
@@ -125,18 +121,28 @@ export class AppStore {
     }
     setIsChecked(sortingName, value) {
         this.currentSorting = [];
-        if (sortingName === "price") {
-            this.isChecked = { price: value, name: false, rating: false };
+        if (sortingName === "price" && value === true) {
+            this.isChecked = { price: true, name: false, rating: false };
             this.currentSorting.push("price");
+        } else if (sortingName === "price" && value === false) {
+            this.isChecked = { price: false, name: false, rating: false };
+            this.currentSorting = [];
         }
 
-        if (sortingName === "name") {
-            this.isChecked = { price: false, name: value, rating: false };
+        if (sortingName === "name" && value === true) {
+            this.isChecked = { price: false, name: true, rating: false };
             this.currentSorting.push("name");
+        } else if (sortingName === "name" && value === false) {
+            this.isChecked = { price: false, name: false, rating: false };
+            this.currentSorting = [];
         }
-        if (sortingName === "rating") {
-            this.isChecked = { price: false, name: false, rating: value };
+
+        if (sortingName === "rating" && value === true) {
+            this.isChecked = { price: false, name: false, rating: true };
             this.currentSorting.push("rating");
+        } else if (sortingName === "rating" && value === false) {
+            this.isChecked = { price: false, name: false, rating: false };
+            this.currentSorting = [];
         }
     }
 
@@ -166,28 +172,20 @@ export class AppStore {
     }
 
     sortingByPrice() {
-        if (this.currentCategory.length === 0)
-            this.ApiData.sort((first, second) => {
+        if (this.currentCategory.length === 0) {
+            this.sortingData.sort((first, second) => {
                 if (first.price > second.price) {
                     return 1;
                 } else if (first.price < second.price) {
                     return -1;
                 } else return 0;
             });
-        else
-            this.filterProducts.sort((first, second) => {
-                if (first.price > second.price) {
-                    return 1;
-                } else if (first.price < second.price) {
-                    return -1;
-                } else return 0;
-            });
+        }
     }
 
     sortingByName() {
-        console.log(this.currentCategory.length);
-        if (this.currentCategory.length === 0)
-            this.ApiData.sort((first, second) => {
+        if (this.currentCategory.length === 0) {
+            this.sortingData.sort((first, second) => {
                 const firstItem = first.title?.toLowerCase();
                 const secondItem = second.title?.toLowerCase();
 
@@ -197,30 +195,12 @@ export class AppStore {
                     return -1;
                 } else return 0;
             });
-        else
-            this.filterProducts.sort((first, second) => {
-                const firstItem = first.title?.toLowerCase();
-                const secondItem = second.title?.toLowerCase();
-
-                if (firstItem > secondItem) {
-                    return 1;
-                } else if (firstItem < secondItem) {
-                    return -1;
-                } else return 0;
-            });
+        }
     }
 
     sortingByRating() {
         if (this.currentCategory.length === 0)
-            this.ApiData.sort((first, second) => {
-                if (first.rating > second.rating) {
-                    return 1;
-                } else if (first.rating < second.rating) {
-                    return -1;
-                } else return 0;
-            });
-        else
-            this.filterProducts.sort((first, second) => {
+            this.sortingData.sort((first, second) => {
                 if (first.rating > second.rating) {
                     return 1;
                 } else if (first.rating < second.rating) {
@@ -235,10 +215,30 @@ export class AppStore {
                 return { ...item, isCart: true };
             } else return item;
         });
+        this.sortingData = this.sortingData.map((item) => {
+            if (item.id === id) {
+                return { ...item, isCart: true };
+            } else return item;
+        });
+        this.filterProducts = this.filterProducts.map((item) => {
+            if (item.id === id) {
+                return { ...item, isCart: true };
+            } else return item;
+        });
     }
 
     deleteCartItem(id) {
         this.ApiData = this.ApiData.map((item) => {
+            if (item.id === id) {
+                return { ...item, isCart: false };
+            } else return item;
+        });
+        this.sortingData = this.sortingData.map((item) => {
+            if (item.id === id) {
+                return { ...item, isCart: false };
+            } else return item;
+        });
+        this.filterProducts = this.filterProducts.map((item) => {
             if (item.id === id) {
                 return { ...item, isCart: false };
             } else return item;
