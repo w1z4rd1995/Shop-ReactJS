@@ -16,6 +16,8 @@ export const Products = observer(() => {
     };
 
     const [isLoading, setIsLoading] = useState(false);
+    // console.log(store.filterProducts);
+    // console.log(store.currentCategory);
 
     const loadingHandler = () => {
         if (isLoading === false) {
@@ -25,7 +27,6 @@ export const Products = observer(() => {
             }, 500);
         }
     };
-    console.log("123");
 
     useEffect(() => {
         if (store.IsReady === false) {
@@ -89,10 +90,27 @@ export const Products = observer(() => {
                                                     checked={item.isSelected}
                                                     onChange={() => {
                                                         loadingHandler();
-                                                        store.setCategoryFilter(
-                                                            item
-                                                        );
-                                                        store.chooseSorting();
+                                                        if (
+                                                            item.isSelected ===
+                                                            false
+                                                        ) {
+                                                            store.setCategoryFilter(
+                                                                item
+                                                            );
+                                                            store.clearFilterProducts();
+                                                            store.filterList();
+                                                            store.chooseSorting();
+                                                        } else if (
+                                                            item.isSelected ===
+                                                            true
+                                                        ) {
+                                                            store.setCategoryFilter(
+                                                                item
+                                                            );
+                                                            store.setFilterProducts();
+                                                            store.filterList();
+                                                            store.chooseSorting();
+                                                        }
                                                     }}
                                                 />
                                                 {item.category}
@@ -113,8 +131,14 @@ export const Products = observer(() => {
                                 loadingHandler();
                                 if (store.isChecked.price === false) {
                                     store.setIsChecked("price", true);
+
                                     store.sortingByPrice();
-                                } else store.setIsChecked("price", false);
+
+                                    // store.chooseSorting();
+                                } else if (store.isChecked.price === true) {
+                                    store.setIsChecked("price", false);
+                                    store.filterList();
+                                }
                             }}
                         />
                         Цене
@@ -126,8 +150,13 @@ export const Products = observer(() => {
                                 loadingHandler();
                                 if (store.isChecked.name === false) {
                                     store.setIsChecked("name", true);
+                                    store.filterList();
+
                                     store.sortingByName();
-                                } else store.setIsChecked("name", false);
+                                } else if (store.isChecked.name === true) {
+                                    store.setIsChecked("name", false);
+                                    store.filterList();
+                                }
                             }}
                         />
                         Наименованию
@@ -139,8 +168,12 @@ export const Products = observer(() => {
                                 loadingHandler();
                                 if (store.isChecked.rating === false) {
                                     store.setIsChecked("rating", true);
+
                                     store.sortingByRating();
-                                } else store.setIsChecked("rating", false);
+                                } else if (store.isChecked.rating === true) {
+                                    store.setIsChecked("rating", false);
+                                    store.filterList();
+                                }
                             }}
                         />
                         Рейтингу

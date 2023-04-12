@@ -1,6 +1,7 @@
 import { createContext } from "react";
 import { makeAutoObservable, toJS } from "mobx";
 import axios from "axios";
+import { Api } from "@mui/icons-material";
 
 export class OneProductDescription {
     constructor(
@@ -79,7 +80,6 @@ export class AppStore {
         this.categoryFilter = this.Categories.map((category) => {
             return { category, isSelected: false };
         });
-        this.sortingData = [...this.ApiData];
 
         store.findMinMaxPrice();
     };
@@ -104,18 +104,31 @@ export class AppStore {
                 } else return { ...item };
             });
         }
+    }
+    setFilterProducts() {
+        this.filterProducts = [...this.ApiData];
+    }
+    clearFilterProducts() {
+        this.filterProducts = [];
+    }
 
+    filterList() {
         this.currentCategory = this.categoryFilter.filter(
             (item) => item.isSelected === true
         );
-
+        console.log(this.currentCategory);
         let tempFilterProduct = [];
         this.currentCategory.map((item) => {
             this.ApiData.map((product) => {
                 if (item.category === product.category) {
                     tempFilterProduct.push({ ...product });
                 }
-                this.filterProducts = tempFilterProduct;
+
+                if (this.currentCategory.length !== 0) {
+                    this.filterProducts = tempFilterProduct;
+                }
+
+                console.log(tempFilterProduct);
             });
         });
     }
@@ -172,41 +185,36 @@ export class AppStore {
     }
 
     sortingByPrice() {
-        if (this.currentCategory.length === 0) {
-            this.sortingData.sort((first, second) => {
-                if (first.price > second.price) {
-                    return 1;
-                } else if (first.price < second.price) {
-                    return -1;
-                } else return 0;
-            });
-        }
+        this.filterProducts.sort((first, second) => {
+            if (first.price > second.price) {
+                return 1;
+            } else if (first.price < second.price) {
+                return -1;
+            } else return 0;
+        });
     }
 
     sortingByName() {
-        if (this.currentCategory.length === 0) {
-            this.sortingData.sort((first, second) => {
-                const firstItem = first.title?.toLowerCase();
-                const secondItem = second.title?.toLowerCase();
+        this.filterProducts.sort((first, second) => {
+            const firstItem = first.title?.toLowerCase();
+            const secondItem = second.title?.toLowerCase();
 
-                if (firstItem > secondItem) {
-                    return 1;
-                } else if (firstItem < secondItem) {
-                    return -1;
-                } else return 0;
-            });
-        }
+            if (firstItem > secondItem) {
+                return 1;
+            } else if (firstItem < secondItem) {
+                return -1;
+            } else return 0;
+        });
     }
 
     sortingByRating() {
-        if (this.currentCategory.length === 0)
-            this.sortingData.sort((first, second) => {
-                if (first.rating > second.rating) {
-                    return 1;
-                } else if (first.rating < second.rating) {
-                    return -1;
-                } else return 0;
-            });
+        this.filterProducts.sort((first, second) => {
+            if (first.rating > second.rating) {
+                return 1;
+            } else if (first.rating < second.rating) {
+                return -1;
+            } else return 0;
+        });
     }
 
     addCart(id) {
