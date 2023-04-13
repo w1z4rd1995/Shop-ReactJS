@@ -12,25 +12,12 @@ export const Main = observer(() => {
         justifyContent: "center",
         alignItems: "center",
         alignSelf: "center",
-        // background: "#364d79",
     };
-    //     return (
-    //         store.allImages && (
-    //             <div className="imageSliderContainer">
-    //                 <Carousel
-    //                     slides={slides}
-    //                     autoplay={true}
-    //                     interval={4000}
-    //                     arrows={true}
-    //                 />
-    //             </div>
-    //         )
-    //     );
-    // });
+
     return (
         store.allImages && (
             <div className="imageSliderContainer">
-                <Carousel autoplay autoplaySpeed={5000} effect="fade">
+                <Carousel autoplay autoplaySpeed={3000} effect="fade">
                     {store.allImages.map((item, i) => (
                         <div className="hui" key={i}>
                             <img className="imageSlider" src={item} />

@@ -10,22 +10,31 @@ export const ChooseProductList = observer(() => {
         store.currentSorting.length === 0
     ) {
         store.setFilterProducts();
+
         return store.ApiData.map((item) => {
-            return (
-                <div key={item.id}>
-                    <OneProduct Item={item} />
-                </div>
-            );
+            if (
+                item.price >= store.sliderValue[0] &&
+                item.price <= store.sliderValue[1]
+            ) {
+                return (
+                    <div key={item.id}>
+                        <OneProduct Item={item} />
+                    </div>
+                );
+            }
         });
     } else {
-        console.log("filter");
-
         return store.filterProducts.map((item) => {
-            return (
-                <div key={item.id}>
-                    <OneProduct Item={item} />
-                </div>
-            );
+            if (
+                item.price >= store.sliderValue[0] &&
+                item.price <= store.sliderValue[1]
+            ) {
+                return (
+                    <div key={item.id}>
+                        <OneProduct Item={item} />
+                    </div>
+                );
+            }
         });
     }
 });

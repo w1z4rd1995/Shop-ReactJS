@@ -8,19 +8,23 @@ import { CategoryProducts } from "./Pages/CategoryProducts";
 import { Products } from "./components/Products";
 import { Cart } from "./Pages/Cart";
 import { OneProductPage } from "./Pages/OneProductPage";
-import footerlogo from "./components/images/footerLogo.PNG";
+import logo from "./components/images/footerLogo.PNG";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import CallIcon from "@mui/icons-material/Call";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
+import { SearchField } from "@adobe/react-spectrum";
 
 const App = observer(() => {
     return (
         <div className="container">
             <div className="header">
-                <div>
+                <div className="headerLogo">
+                    <img className="headerLogoStyle" src={logo} />
+                </div>
+                <div className="headerLinks">
                     <div>
                         <NavLink to="/">Главная</NavLink>
                     </div>
@@ -34,6 +38,9 @@ const App = observer(() => {
                     <div>
                         <NavLink to="/contacts">Контакты</NavLink>
                     </div>
+                </div>
+                <div className="headerSearchStyle">
+                    <SearchField className="headerSearch" />
                 </div>
             </div>
             <div className="content">
@@ -58,7 +65,7 @@ const App = observer(() => {
             <div className="footer">
                 <div className="footerContent">
                     <div className="footerLogo">
-                        <img className="logoStyle" src={footerlogo}></img>
+                        <img className="logoStyle" src={logo}></img>
                     </div>
                     <div className="footerPages">
                         <div>

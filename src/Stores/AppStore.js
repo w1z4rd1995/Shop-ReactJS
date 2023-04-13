@@ -45,11 +45,15 @@ export class AppStore {
     users = [];
     oneNewItem = {};
 
+    sliderValue = [];
+
     IsReady = false;
     isChecked = { price: false, name: false, rating: false };
     currentSorting = [];
     minPrice;
     maxPrice;
+    visibleItems;
+    invisibleItems;
 
     fetchData = async () => {
         const api_url = "https://fakestoreapi.com/products";
@@ -83,6 +87,20 @@ export class AppStore {
 
         store.findMinMaxPrice();
     };
+    setVisibleItems = (value) => {
+        this.visibleItems = 0;
+        // this.invisibleItems = 100;
+        if (value === "visible") {
+            this.visibleItems = this.visibleItems + 1;
+        }
+
+        console.log(this.visibleItems);
+        // console.log(this.invisibleItems);
+    };
+
+    setSliderValue(newValue) {
+        this.sliderValue = newValue;
+    }
 
     fetchDataUsers = async () => {
         const api_url = "https://reqres.in/api/users";

@@ -9,15 +9,13 @@ import CircularProgress from "@mui/material/CircularProgress";
 import { ChooseProductList } from "./ChooseProductList";
 
 export const Products = observer(() => {
-    const [sliderValueChange, setSliderValueChange] = useState([]);
     const onSliderChange = (event, newValue) => {
-        setSliderValueChange(newValue);
+        store.setSliderValue(newValue);
         loadingHandler();
     };
 
     const [isLoading, setIsLoading] = useState(false);
-    // console.log(store.filterProducts);
-    // console.log(store.currentCategory);
+    console.log(store.sliderValue);
 
     const loadingHandler = () => {
         if (isLoading === false) {
@@ -34,7 +32,7 @@ export const Products = observer(() => {
             console.log("зашел фетч");
             store.setIsReady(true);
         }
-        setSliderValueChange([store.minPrice, store.maxPrice]);
+        store.setSliderValue([store.minPrice, store.maxPrice]);
     }, [store.minPrice]);
 
     return (
@@ -73,8 +71,8 @@ export const Products = observer(() => {
                                     )}
                                 </div>
                                 <div className="minMaxPrices">
-                                    {sliderValueChange[0]} $ -{" "}
-                                    {sliderValueChange[1]} $
+                                    {store.sliderValue[0]} $ -{" "}
+                                    {store.sliderValue[1]} $
                                 </div>
                             </div>
 

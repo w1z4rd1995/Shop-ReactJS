@@ -3,6 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
+        "@adobe/react-spectrum": "^3.26.0",
         "@emotion/react": "^11.10.5",
         "@emotion/styled": "^11.10.5",
         "@material/checkbox": "^14.0.0",
