@@ -16,8 +16,15 @@ import TelegramIcon from "@mui/icons-material/Telegram";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import { SearchField } from "@adobe/react-spectrum";
+import { Input } from "antd";
+import { useState } from "react";
 
 const App = observer(() => {
+    const [a, setA] = useState("");
+    const onSearch = (e) => {
+        setA(e.target.value);
+        console.log(a);
+    };
     return (
         <div className="container">
             <div className="header">
@@ -40,7 +47,14 @@ const App = observer(() => {
                     </div>
                 </div>
                 <div className="headerSearchStyle">
-                    <SearchField className="headerSearch" />
+                    <Input
+                        // className="headerSearch"
+                        placeholder="input search text"
+                        allowClear
+                        // size="large"
+                        onSearch={onSearch}
+                        enterbutton="Search"
+                    />
                 </div>
             </div>
             <div className="content">
