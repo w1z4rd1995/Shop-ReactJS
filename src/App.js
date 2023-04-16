@@ -18,12 +18,28 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import { SearchField } from "@adobe/react-spectrum";
 import { Input } from "antd";
 import { useState } from "react";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import SearchIcon from "@mui/icons-material/Search";
+import { SearchedProducts } from "./components/SearchedProducts";
 
 const App = observer(() => {
-    const [a, setA] = useState("");
-    const onSearch = (e) => {
-        setA(e.target.value);
-        console.log(a);
+    const [searchInputValue, setSearchInputValue] = useState("");
+
+    const [isMenuOpened, setIsMenuOpened] = useState(false);
+
+    const onSearchClick = () => {
+        if (isMenuOpened === false) {
+            setIsMenuOpened(true);
+        } else setIsMenuOpened(false);
+    };
+
+    const onChangeSearch = (e) => {
+        const timeOut = setTimeout(
+            () => setSearchInputValue(e.target.value),
+            400
+        );
+        return () => clearTimeout(timeOut);
     };
     return (
         <div className="container">
@@ -46,15 +62,45 @@ const App = observer(() => {
                         <NavLink to="/contacts">Контакты</NavLink>
                     </div>
                 </div>
+
                 <div className="headerSearchStyle">
-                    <Input
-                        // className="headerSearch"
-                        placeholder="input search text"
-                        allowClear
-                        // size="large"
-                        onSearch={onSearch}
-                        enterbutton="Search"
-                    />
+                    <div>
+                        <SearchIcon fontSize="large" />
+                    </div>
+                    <div className="searchInput">
+                        <Input
+                            // className="headerSearch"
+                            placeholder="Поиск по товарам"
+                            allowClear
+                            // size="large"
+                            onChange={onChangeSearch}
+                            onClick={onSearchClick}
+                        />
+                        {isMenuOpened && (
+                            <div className="headerSearchMenu">
+                                <div>
+                                    <SearchedProducts
+                                        searchValue={searchInputValue}
+                                    />
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                </div>
+                <div className="headerInfo">
+                    <div className="headerPhone">
+                        <div>
+                            <CallIcon fontSize="medium" />
+                        </div>
+                        <div>+7(495)4958800</div>
+                    </div>
+                    <div className="headerMail">
+                        <div>
+                            <MailOutlineIcon fontSize="medium" />
+                        </div>
+                        <div>sobaka@mail.ru</div>
+                    </div>
+                    <div>Режим работы: 8:00 - 23:00</div>
                 </div>
             </div>
             <div className="content">
