@@ -22,6 +22,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import SearchIcon from "@mui/icons-material/Search";
 import { SearchedProducts } from "./components/SearchedProducts";
+import Search from "antd/es/transfer/search";
 
 const App = observer(() => {
     const [searchInputValue, setSearchInputValue] = useState("");
@@ -29,18 +30,22 @@ const App = observer(() => {
     const [isMenuOpened, setIsMenuOpened] = useState(false);
 
     const onSearchClick = () => {
-        if (isMenuOpened === false) {
+        if (searchInputValue !== "") {
             setIsMenuOpened(true);
-        } else setIsMenuOpened(false);
+        }
     };
 
+    const debounce =
+        (func, delay, timeout = 0) =>
+        (args) => {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func(args), delay);
+        };
+
     const onChangeSearch = (e) => {
-        const timeOut = setTimeout(
-            () => setSearchInputValue(e.target.value),
-            400
-        );
-        return () => clearTimeout(timeOut);
+        setSearchInputValue(e.target.value);
     };
+
     return (
         <div className="container">
             <div className="header">
@@ -73,10 +78,11 @@ const App = observer(() => {
                             placeholder="Поиск по товарам"
                             allowClear
                             // size="large"
-                            onChange={onChangeSearch}
+                            onChange={debounce(onChangeSearch, 400)}
                             onClick={onSearchClick}
+                            // on={onSearchClick}
                         />
-                        {isMenuOpened && (
+                        {searchInputValue !== "" && (
                             <div className="headerSearchMenu">
                                 <div>
                                     <SearchedProducts

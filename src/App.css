@@ -1274,7 +1274,7 @@
 .headerSearchMenu {
     border-radius: 6px;
     overflow-y: auto;
-    margin-top: 5px;
+    margin-top: 10px;
     background-color: white;
     box-shadow: 0 0 10px 2px rgba(221, 221, 221, 1);
     width: 100%;
@@ -1305,4 +1305,57 @@
 }
 .css-1m9pwf3 {
     z-index: 0 !important;
+}
+
+.searchedItem {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+}
+.searchedItem:hover {
+    background-color: rgb(240, 240, 240);
+}
+.searchedItem > div {
+    display: flex;
+    justify-content: left;
+    align-items: left;
+}
+.searchedItemImage {
+    object-fit: contain;
+    width: 80px;
+    height: 80px;
+}
+
+.oneSearchedItem {
+    padding: 5px 5px 5px 5px;
+}
+.oneSearchedItem > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.searchedItemTitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    overflow: hidden;
+    text-align: left;
+    /* padding-right: 10px; */
+    padding-left: 10px;
+    text-overflow: ellipsis;
+}
+.searchedItemTitle > a {
+    color: black;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+.searchedItemTitle > a:hover {
+    color: coral;
+}
+.menuContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 10px 10px 10px;
 }
