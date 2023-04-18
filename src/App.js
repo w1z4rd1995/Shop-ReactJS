@@ -26,13 +26,34 @@ import Search from "antd/es/transfer/search";
 
 const App = observer(() => {
     const [searchInputValue, setSearchInputValue] = useState("");
-
     const [isMenuOpened, setIsMenuOpened] = useState(false);
 
     const onSearchClick = () => {
-        if (searchInputValue !== "") {
+        findObj();
+        if (isMenuOpened === false) {
             setIsMenuOpened(true);
+        } else if (isMenuOpened === true) {
+            setIsMenuOpened(false);
         }
+    };
+
+    const findObj = () => {
+        const div = document.getElementById("root");
+        // console.log(isMenuOpened);
+        div.addEventListener("click", function eventHandler(event) {
+            const target = event.target;
+            console.log(target.className);
+
+            if (isMenuOpened === false) {
+                if (target.className !== "menuContainer") {
+                    console.log(Boolean(target.className === "menuContainer"));
+                    div.removeEventListener("click", eventHandler);
+                    // console.log("есть");
+
+                    setIsMenuOpened(false);
+                }
+            }
+        });
     };
 
     const debounce =
@@ -68,7 +89,7 @@ const App = observer(() => {
                     </div>
                 </div>
 
-                <div className="headerSearchStyle">
+                <div className="headerSearchStyle" id="menu">
                     <div>
                         <SearchIcon fontSize="large" />
                     </div>
@@ -82,7 +103,7 @@ const App = observer(() => {
                             onClick={onSearchClick}
                             // on={onSearchClick}
                         />
-                        {searchInputValue !== "" && (
+                        {isMenuOpened && (
                             <div className="headerSearchMenu">
                                 <div>
                                     <SearchedProducts
@@ -121,11 +142,6 @@ const App = observer(() => {
                     />
 
                     <Route path="/cart" element={<Cart />} />
-
-                    {/* <Route
-                        path="/catalog/:categoryName"
-                        element={<CategoryProducts />}
-                    /> */}
                 </Routes>
             </div>
             <div className="footer">
@@ -147,7 +163,7 @@ const App = observer(() => {
                     </div>
                     <div className="footerButton">
                         <NavLink to="/contacts" className="footerButtonStyle">
-                            Связаться с нами{" "}
+                            Связаться с нами
                         </NavLink>
                     </div>
                     <div className="footerContacts">

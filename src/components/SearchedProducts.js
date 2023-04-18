@@ -1,8 +1,10 @@
 import { observer } from "mobx-react-lite";
 import { store } from "../Stores/AppStore";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const SearchedProducts = observer((props) => {
+    const navigate = useNavigate();
     console.log(props.searchValue);
     const searchedItems = store.ApiData.filter((item) =>
         item.title?.toLowerCase().includes(props.searchValue)
@@ -12,7 +14,11 @@ export const SearchedProducts = observer((props) => {
             {searchedItems.length !== 0 ? (
                 searchedItems.map((item) => {
                     return (
-                        <div className="searchedItem" key={item.id}>
+                        <div
+                            className="searchedItem"
+                            onClick={() => navigate(`/products/${item.id}`)}
+                            key={item.id}
+                        >
                             <div className="oneSearchedItem">
                                 <div>
                                     <img

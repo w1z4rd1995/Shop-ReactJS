@@ -3,10 +3,10 @@ import Rating from "@mui/material/Rating";
 import { store } from "../Stores/AppStore";
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const OneProduct = observer((props) => {
-    // const [quantity, setQuantity] = useState(0);
-
+    const navigate = useNavigate();
     return (
         <div className="oneProduct">
             <div className="imageStyle">
