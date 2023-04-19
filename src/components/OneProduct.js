@@ -35,6 +35,7 @@ export const OneProduct = observer((props) => {
                         onClick={() => {
                             store.addCart(props.Item.id);
                             store.setCategoryFilter(props.Item);
+                            store.findCartCount();
                         }}
                     ></input>
                 ) : (

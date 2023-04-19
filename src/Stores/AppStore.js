@@ -46,6 +46,7 @@ export class AppStore {
     oneNewItem = {};
 
     sliderValue = [];
+    cartCount = 0;
 
     IsReady = false;
     isChecked = { price: false, name: false, rating: false };
@@ -87,6 +88,16 @@ export class AppStore {
 
         store.findMinMaxPrice();
     };
+
+    findCartCount() {
+        let count = 0;
+        store.ApiData.map((item) => {
+            if (item.isCart === true) {
+                count += 1;
+            }
+            this.cartCount = count;
+        });
+    }
     setVisibleItems = (value) => {
         this.visibleItems = 0;
         // this.invisibleItems = 100;

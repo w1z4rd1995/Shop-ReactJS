@@ -26,15 +26,6 @@ export const Products = observer(() => {
         }
     };
 
-    useEffect(() => {
-        if (store.IsReady === false) {
-            store.fetchData();
-            console.log("зашел фетч");
-            store.setIsReady(true);
-        }
-        store.setSliderValue([store.minPrice, store.maxPrice]);
-    }, [store.minPrice]);
-
     return (
         store.IsReady &&
         store.ApiData && (

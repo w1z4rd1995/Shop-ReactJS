@@ -68,9 +68,10 @@ export const OneProductPage = observer(() => {
                                         <input
                                             type="button"
                                             value="В корзину"
-                                            onClick={() =>
-                                                store.addCart(item.id)
-                                            }
+                                            onClick={() => {
+                                                store.addCart(item.id);
+                                                store.findCartCount();
+                                            }}
                                         />
                                     ) : (
                                         <>

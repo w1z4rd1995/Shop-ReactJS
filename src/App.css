@@ -108,6 +108,7 @@
     text-decoration: none;
 }
 .headerLinks {
+    padding-top: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -124,22 +125,40 @@
     justify-content: center; */
 }
 
-.header > div > div > a {
+.header > div > div > a,
+.header > div > div > div > a {
     font-size: 1.5rem;
     padding-left: 20px;
     padding-right: 20px;
     color: white;
     text-decoration: none;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
 }
 
-.header > div > div > a:hover {
-    text-decoration: underline;
+.header > div > div > a:hover,
+.header > div > div > div > a:hover {
+    /* text-decoration: underline; */
+    background-color: white;
+    color: black;
 }
-.header > div > div > a.active {
-    color: rgb(18, 179, 179);
+.header > div > div > a.active,
+.header > div > div > div > a.active {
+    background-color: white;
+    color: black;
     cursor: default;
+    font-weight: 500;
 }
-
+.headerLinks > div:hover {
+}
+.headerLinks > div {
+    height: 100%;
+}
+.headerLinks {
+    display: flex;
+    gap: 20px;
+}
 .catalogContent {
     display: grid;
     /* grid-template-columns: auto auto auto; */
@@ -514,6 +533,8 @@
 }
 
 .emptyCart > div > a {
+    text-align: center;
+    width: 500px;
     font-size: 1.5rem;
     background-color: coral;
     padding: 10px;
@@ -521,6 +542,7 @@
     text-decoration: none;
     border-radius: 10px;
 }
+
 .emptyCart > div > #text {
     font-size: 1.5rem;
     background-color: coral;
@@ -532,6 +554,9 @@
 
 .emptyCart > div > a:hover {
     background-color: chocolate;
+}
+.emptyCart > div > a:foc {
+    top: 10px;
 }
 
 .filters > div {
@@ -1218,6 +1243,10 @@
 }
 .feedBackButton > button:hover {
     cursor: pointer;
+    background-color: rgb(109, 109, 109);
+}
+.feedBackButton:active {
+    top: 10px;
 }
 
 .css-tzssek-MuiSvgIcon-root {
@@ -1319,6 +1348,7 @@
     background-color: rgb(240, 240, 240);
     cursor: pointer;
     border-radius: 10px;
+    transition: all 0.3s;
 }
 .searchedItem > div {
     display: flex;
@@ -1363,4 +1393,28 @@
     flex-direction: column;
     gap: 10px;
     padding: 10px 10px 10px 10px;
+}
+
+.userName {
+    padding-top: 15px;
+}
+
+.cartCount {
+    margin-left: 118px;
+    margin-top: -46px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: coral;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    color: white;
+    border-radius: 15px;
+    font-size: 1.3rem;
+    font-weight: 400;
+    transition: all 1s;
+}
+.cartStyle {
+    position: relative;
 }

@@ -4,7 +4,6 @@ import { Catalog } from "./Pages/Catalog";
 import { Contacts } from "./Pages/Contacts";
 import { Main } from "./Pages/Main";
 import { observer } from "mobx-react-lite";
-import { CategoryProducts } from "./Pages/CategoryProducts";
 import { Products } from "./components/Products";
 import { Cart } from "./Pages/Cart";
 import { OneProductPage } from "./Pages/OneProductPage";
@@ -15,14 +14,11 @@ import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
-import { SearchField } from "@adobe/react-spectrum";
 import { Input } from "antd";
 import { useState } from "react";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
 import SearchIcon from "@mui/icons-material/Search";
 import { SearchedProducts } from "./components/SearchedProducts";
-import Search from "antd/es/transfer/search";
+import { store } from "./Stores/AppStore";
 
 const App = observer(() => {
     const [searchInputValue, setSearchInputValue] = useState("");
@@ -82,7 +78,14 @@ const App = observer(() => {
                         <NavLink to="/products">Все товары</NavLink>
                     </div>
                     <div>
-                        <NavLink to="/cart">Корзина</NavLink>
+                        <div className="cartStyle">
+                            <NavLink to="/cart">Корзина</NavLink>
+                        </div>
+                        {store.cartCount !== 0 ? (
+                            <div className="cartCount">{store.cartCount}</div>
+                        ) : (
+                            ""
+                        )}
                     </div>
                     <div>
                         <NavLink to="/contacts">Контакты</NavLink>
