@@ -955,11 +955,20 @@
 }
 .footerNav {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: left;
+    align-items: left;
     flex-direction: column;
     gap: 20px;
 }
+
+.footerNav a:hover {
+    cursor: pointer;
+    color: coral;
+}
+.footerNav > a {
+    transition: 200ms;
+}
+
 .logoStyle {
     object-fit: contain;
     width: 100%;
@@ -1086,6 +1095,10 @@
 .footerContactsInfo > div {
     gap: 10px;
 }
+.footerContactsInfo > div > div:hover {
+    cursor: default;
+}
+
 .contactsContainer {
     display: grid;
     grid-template-areas:
@@ -1295,8 +1308,8 @@
     align-items: center;
 }
 .headerInfo > div:hover {
-    cursor: pointer;
-    color: coral;
+    cursor: default;
+
     /* transition: 200ms; */
 }
 .headerInfo > div {

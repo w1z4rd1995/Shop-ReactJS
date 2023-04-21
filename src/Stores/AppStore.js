@@ -45,7 +45,6 @@ export class AppStore {
     users = [];
     oneNewItem = {};
 
-    sliderValue = [];
     cartCount = 0;
 
     IsReady = false;
@@ -53,6 +52,7 @@ export class AppStore {
     currentSorting = [];
     minPrice;
     maxPrice;
+    sliderValue = [];
     visibleItems;
     invisibleItems;
 
@@ -93,7 +93,7 @@ export class AppStore {
         let count = 0;
         store.ApiData.map((item) => {
             if (item.isCart === true) {
-                count += 1;
+                count = count + item.cartQuantity;
             }
             this.cartCount = count;
         });

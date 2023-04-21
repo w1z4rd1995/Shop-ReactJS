@@ -17,6 +17,7 @@ export const ItemCounter = observer((props) => {
         }
         // counter = counter + 1;
         store.setNewQuantity(props.Id, counter);
+        store.findCartCount();
     };
 
     const decrease = () => {
@@ -25,6 +26,7 @@ export const ItemCounter = observer((props) => {
             setCounterItem(counter);
             store.setNewQuantity(props.Id, counter);
         }
+        store.findCartCount();
         // counter -= 1;
 
         if (counter === 0) {

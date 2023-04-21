@@ -1,8 +1,8 @@
 {
     "name": "shop",
     "version": "0.1.0",
-    "private": true,
-    "homepage": "https://w1z4rd1995.github.io/shop-test/",
+    "private": false,
+    "homepage": "https://w1z4rd1995.github.io/shop-test",
     "dependencies": {
         "@adobe/react-spectrum": "^3.26.0",
         "@emotion/react": "^11.10.5",

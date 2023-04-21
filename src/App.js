@@ -75,7 +75,7 @@ const App = observer(() => {
                     </div>
 
                     <div>
-                        <NavLink to="/products">Все товары</NavLink>
+                        <NavLink to="/products">Товары</NavLink>
                     </div>
                     <div>
                         <div className="cartStyle">
@@ -158,8 +158,7 @@ const App = observer(() => {
                         </div>
                         <div className="footerNav">
                             <NavLink to="/">Главная</NavLink>
-                            <NavLink to="/catalog">Каталог</NavLink>
-                            <NavLink to="/products">Все товары</NavLink>
+                            <NavLink to="/products">Товары</NavLink>
                             <NavLink to="/cart">Корзина</NavLink>
                             <NavLink to="/contacts">Контакты</NavLink>
                         </div>
