@@ -26,16 +26,6 @@ export const Main = observer(() => {
         store.setSliderValue([store.minPrice, store.maxPrice]);
     }, [store.minPrice]);
 
-    const contentStyle = {
-        display: "flex",
-        height: "600px",
-        color: "#fff",
-        lineHeight: "160px",
-        justifyContent: "center",
-        alignItems: "center",
-        alignSelf: "center",
-    };
-
     return (
         store.allImages && (
             <div className="imageSliderContainer">

@@ -6,7 +6,6 @@ import { Link, NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 export const OneProduct = observer((props) => {
-    const navigate = useNavigate();
     return (
         <div className="oneProduct">
             <div className="imageStyle">

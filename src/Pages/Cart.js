@@ -3,7 +3,6 @@ import { observer } from "mobx-react-lite";
 import { OneCart } from "../components/OneCart";
 import emptyCart from "../components/images/EmptyCart1.png";
 import { NavLink } from "react-router-dom";
-import { motion } from "framer-motion";
 
 export const Cart = observer(() => {
     let counterCartItems = 0;
@@ -24,7 +23,6 @@ export const Cart = observer(() => {
                 <div className="cartContainer">
                     <div className="totalPrice">
                         <div className="cartQuantity">В корзине товаров:</div>
-                        {/* <div>товаров: </div> */}
                         <div>{counterCartItems} шт.</div>
                         <div className="cartQuantity">На сумму:</div>
                         <div className="">{totalPrice.toFixed(2)} $</div>
@@ -40,21 +38,9 @@ export const Cart = observer(() => {
                         {store.ApiData.map((item) => {
                             if (item.isCart === true) {
                                 return (
-                                    <motion.div
-                                        initial={{ opacity: 0 }}
-                                        transition={{ duration: 0.5 }}
-                                        animate={{ opacity: 1 }}
-                                        exit={{ opacity: 0 }}
-                                        key={item.id}
-                                    >
-                                        <OneCart
-                                            Item={item}
-                                            // Counter={counter}
-                                            // SetCounter={setCounter}
-                                            // TotalPrice={totalPrice}
-                                            // SetTotalPrice={setTotalPrice}
-                                        />
-                                    </motion.div>
+                                    <div key={item.id}>
+                                        <OneCart Item={item} />
+                                    </div>
                                 );
                             }
                         })}

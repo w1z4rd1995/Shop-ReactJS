@@ -1167,7 +1167,11 @@
 .map {
     grid-area: map;
     width: 100%;
-    /* height: auto; */
+    height: 600px;
+}
+.map-container {
+    height: 100%;
+    width: 100%;
 }
 .addresses {
     grid-area: addresses;

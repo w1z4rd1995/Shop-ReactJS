@@ -15,7 +15,6 @@ export const Products = observer(() => {
     };
 
     const [isLoading, setIsLoading] = useState(false);
-    console.log(store.sliderValue);
 
     const loadingHandler = () => {
         if (isLoading === false) {
@@ -27,7 +26,6 @@ export const Products = observer(() => {
     };
 
     return (
-        store.IsReady &&
         store.ApiData && (
             <div className="productContainer">
                 <div className="filters">
@@ -47,7 +45,6 @@ export const Products = observer(() => {
                                     {store.minPrice && store.maxPrice && (
                                         <Slider
                                             key={`slider-${store.sliderValue}`}
-                                            // color="black"
                                             min={store.minPrice}
                                             max={store.maxPrice}
                                             defaultValue={
@@ -61,7 +58,6 @@ export const Products = observer(() => {
                                                       ]
                                                     : store.sliderValue
                                             }
-                                            // value={setValue}
                                             valueLabelDisplay="auto"
                                             disableSwap
                                             step={5}
@@ -77,7 +73,7 @@ export const Products = observer(() => {
 
                             <div>
                                 <div className="categoryHeader">
-                                    <h3>Категория</h3>{" "}
+                                    <h3>Категория</h3>
                                 </div>
                                 <div className="filtersCategoryItem">
                                     {store.categoryFilter.map((item, i) => {
@@ -128,10 +124,7 @@ export const Products = observer(() => {
                                 loadingHandler();
                                 if (store.isChecked.price === false) {
                                     store.setIsChecked("price", true);
-
                                     store.sortingByPrice();
-
-                                    // store.chooseSorting();
                                 } else if (store.isChecked.price === true) {
                                     store.setIsChecked("price", false);
                                     store.filterList();

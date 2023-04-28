@@ -100,14 +100,21 @@ export class AppStore {
     }
     setVisibleItems = (value) => {
         this.visibleItems = 0;
-        // this.invisibleItems = 100;
+
         if (value === "visible") {
             this.visibleItems = this.visibleItems + 1;
         }
 
         console.log(this.visibleItems);
-        // console.log(this.invisibleItems);
     };
+
+    setItemQuantity(id) {
+        store.ApiData.map((item) => {
+            if (item.id === id) {
+                return (item.cartQuantity = 1);
+            }
+        });
+    }
 
     setSliderValue(newValue) {
         this.sliderValue = newValue;
@@ -145,7 +152,7 @@ export class AppStore {
         this.currentCategory = this.categoryFilter.filter(
             (item) => item.isSelected === true
         );
-        console.log(this.currentCategory);
+
         let tempFilterProduct = [];
         this.currentCategory.map((item) => {
             this.ApiData.map((product) => {
@@ -156,8 +163,6 @@ export class AppStore {
                 if (this.currentCategory.length !== 0) {
                     this.filterProducts = tempFilterProduct;
                 }
-
-                console.log(tempFilterProduct);
             });
         });
     }

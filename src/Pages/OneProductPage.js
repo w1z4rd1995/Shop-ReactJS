@@ -53,7 +53,7 @@ export const OneProductPage = observer(() => {
                                             <Rating
                                                 value={item.rating}
                                                 readOnly
-                                            />{" "}
+                                            />
                                         </div>
                                         <div>{item.rating}</div>
                                     </div>

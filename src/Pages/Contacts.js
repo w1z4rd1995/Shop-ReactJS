@@ -7,11 +7,31 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import CallIcon from "@mui/icons-material/Call";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import { FeedBack } from "../components/FeedBack";
+import mapboxgl, { Map } from "mapbox-gl";
+import { useRef, useState } from "react";
+// import "mapbox-gl/dist/mapbox-gl.css";
+
+mapboxgl.accessToken =
+    "pk.eyJ1IjoidzF6NHJkMTk5NSIsImEiOiJjbGgwbG15cDMwdXM2M25xYzJ6bDJlYnU4In0.zNpuXxeBit4wbXd1h-550Q";
 
 export const Contacts = observer(() => {
     useEffect(() => {
         store.fetchDataUsers();
+
+        let map = new mapboxgl.Map({
+            container: "map",
+            style: "mapbox://styles/mapbox/streets-v12",
+            center: [37.66901257795662, 55.73036160636285],
+            zoom: 16,
+        });
+
+        let marker = new mapboxgl.Marker({ color: "blue" })
+            .setLngLat([37.66901257795662, 55.73036160636285])
+            .addTo(map);
     }, []);
+
+    // const mapContainer = useRef(null);
+    // const map = useRef(null);
 
     return (
         store.users && (
@@ -28,7 +48,7 @@ export const Contacts = observer(() => {
                     })}
                 </div>
                 <div className="map">
-                    <img src={streetMap} />
+                    <div id="map" className="map-container" />
                 </div>
                 <div className="addresses">
                     <div>

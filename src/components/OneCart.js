@@ -5,11 +5,6 @@ import { useState } from "react";
 import { ItemCounter } from "./ItemCounter";
 
 export const OneCart = observer((props) => {
-    // const [totalPriceItem, setTotalPriceItem] = useState(props.Item.price);
-    // const totalPriceItem = counterItem * props.Item.price;
-    // props.SetTotalPrice([totalPriceItem]);
-
-    // let totalPrice = props.Item.cartQuantity * props.Item.price;
     return (
         <div className="cart">
             <div className="imageCart">
@@ -31,7 +26,6 @@ export const OneCart = observer((props) => {
             </div>
             <div className="cartButtons">
                 <div className="cartPrice">
-                    {/* {props.Item.cartQuantity * props.Item.price} $ */}
                     {props.Item.totalPrice.toFixed(2)} $
                 </div>
                 <input
@@ -39,9 +33,10 @@ export const OneCart = observer((props) => {
                     type="button"
                     value="Удалить"
                     onClick={() => {
-                        console.log("delete");
                         store.deleteCartItem(props.Item.id);
                         store.setCategoryFilter(props.Item);
+                        store.setItemQuantity(props.Item.id);
+                        store.findCartCount();
                     }}
                 />
             </div>

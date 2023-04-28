@@ -8,14 +8,12 @@ export const ItemCounter = observer((props) => {
     const minValue = 0;
     const maxValue = 20;
 
-    // console.log(props.Quantity, "item");
-
     const increase = () => {
         if (counter < maxValue) {
             counter += 1;
             setCounterItem(counter);
         }
-        // counter = counter + 1;
+
         store.setNewQuantity(props.Id, counter);
         store.findCartCount();
     };
@@ -27,7 +25,6 @@ export const ItemCounter = observer((props) => {
             store.setNewQuantity(props.Id, counter);
         }
         store.findCartCount();
-        // counter -= 1;
 
         if (counter === 0) {
             store.deleteCartItem(props.Id);

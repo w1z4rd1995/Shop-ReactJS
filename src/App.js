@@ -1,6 +1,5 @@
 import { Routes, Route, NavLink } from "react-router-dom";
 import "./App.css";
-import { Catalog } from "./Pages/Catalog";
 import { Contacts } from "./Pages/Contacts";
 import { Main } from "./Pages/Main";
 import { observer } from "mobx-react-lite";
@@ -136,7 +135,7 @@ const App = observer(() => {
             <div className="content">
                 <Routes>
                     <Route path="/" element={<Main />} />
-                    <Route path="/catalog" element={<Catalog />} />
+
                     <Route path="/contacts" element={<Contacts />} />
                     <Route path="/products" element={<Products />} />
                     <Route

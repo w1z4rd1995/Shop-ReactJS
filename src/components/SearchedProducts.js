@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 
 export const SearchedProducts = observer((props) => {
     const navigate = useNavigate();
-    console.log(props.searchValue);
     const searchedItems = store.ApiData.filter((item) =>
         item.title?.toLowerCase().includes(props.searchValue)
     );
@@ -28,7 +27,7 @@ export const SearchedProducts = observer((props) => {
                                 </div>
                                 <div className="searchedItemTitle">
                                     <NavLink to={`/products/${item.id}`}>
-                                        {item.title}{" "}
+                                        {item.title}
                                     </NavLink>
                                 </div>
                             </div>
