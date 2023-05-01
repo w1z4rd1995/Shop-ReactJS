@@ -1,9 +1,10 @@
 import { observer } from "mobx-react-lite";
-import { store } from "../Stores/AppStore";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from "antd";
+import { store } from "../../Stores/AppStore";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Carousel } from "antd";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import "./Main.css";
 
 export const Main = observer(() => {
     const navigate = useNavigate();
@@ -18,9 +19,14 @@ export const Main = observer(() => {
     };
 
     useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: "smooth",
+        });
+
         if (store.IsReady === false) {
             store.fetchData();
-            console.log("зашел фетч");
             store.setIsReady(true);
         }
         store.setSliderValue([store.minPrice, store.maxPrice]);

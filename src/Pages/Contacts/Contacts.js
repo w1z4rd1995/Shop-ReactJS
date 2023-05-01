@@ -1,21 +1,25 @@
 import { useEffect } from "react";
-import { store } from "../Stores/AppStore";
+import { store } from "../../Stores/AppStore";
 import { observer } from "mobx-react-lite";
-import { User } from "../components/User";
-import streetMap from "../components/images/StreetMap.PNG";
+import { User } from "../../components/User/User";
+
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import CallIcon from "@mui/icons-material/Call";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
-import { FeedBack } from "../components/FeedBack";
-import mapboxgl, { Map } from "mapbox-gl";
-import { useRef, useState } from "react";
-// import "mapbox-gl/dist/mapbox-gl.css";
+import { FeedBack } from "../../components/FeedBack/FeedBack";
+import mapboxgl from "mapbox-gl";
+import "./Contacts.css";
 
 mapboxgl.accessToken =
     "pk.eyJ1IjoidzF6NHJkMTk5NSIsImEiOiJjbGgwbG15cDMwdXM2M25xYzJ6bDJlYnU4In0.zNpuXxeBit4wbXd1h-550Q";
 
 export const Contacts = observer(() => {
     useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: "smooth",
+        });
         store.fetchDataUsers();
 
         let map = new mapboxgl.Map({
@@ -29,9 +33,6 @@ export const Contacts = observer(() => {
             .setLngLat([37.66901257795662, 55.73036160636285])
             .addTo(map);
     }, []);
-
-    // const mapContainer = useRef(null);
-    // const map = useRef(null);
 
     return (
         store.users && (

@@ -1,9 +1,8 @@
 import { observer } from "mobx-react-lite";
 import Rating from "@mui/material/Rating";
-import { store } from "../Stores/AppStore";
-import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { store } from "../../Stores/AppStore";
+import { NavLink } from "react-router-dom";
+import "./OneProduct.css";
 
 export const OneProduct = observer((props) => {
     return (

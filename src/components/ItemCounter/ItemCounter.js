@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { store } from "../Stores/AppStore";
+import { store } from "../../Stores/AppStore";
 import { observer } from "mobx-react-lite";
+import "./ItemCounter.css";
 
 export const ItemCounter = observer((props) => {
     const [counterItem, setCounterItem] = useState(props.Quantity);

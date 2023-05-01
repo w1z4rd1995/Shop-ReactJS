@@ -1,6 +1,8 @@
-import { store } from "../Stores/AppStore";
-import { OneProduct } from "../components/OneProduct";
+import { store } from "../../Stores/AppStore";
+import { OneProduct } from "../OneProduct/OneProduct";
 import { observer } from "mobx-react-lite";
+import "./ChooseProductList.css";
+
 export const ChooseProductList = observer(() => {
     if (
         store.currentCategory.length === 0 &&

@@ -1,8 +1,10 @@
-import { store } from "../Stores/AppStore";
+import { store } from "../../Stores/AppStore";
 import { observer } from "mobx-react-lite";
-import { OneCart } from "../components/OneCart";
-import emptyCart from "../components/images/EmptyCart1.png";
+import { OneCart } from "../../components/OneCart/OneCart";
+import emptyCart from "../../components/images/EmptyCart1.png";
 import { NavLink } from "react-router-dom";
+import { useEffect } from "react";
+import "./Cart.css";
 
 export const Cart = observer(() => {
     let counterCartItems = 0;
@@ -16,6 +18,13 @@ export const Cart = observer(() => {
             totalPrice = totalPrice + item.totalPrice;
         }
     });
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: "smooth",
+        });
+    }, []);
 
     return (
         <>

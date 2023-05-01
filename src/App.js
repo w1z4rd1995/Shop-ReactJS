@@ -1,11 +1,11 @@
 import { Routes, Route, NavLink } from "react-router-dom";
 import "./App.css";
-import { Contacts } from "./Pages/Contacts";
-import { Main } from "./Pages/Main";
+import { Contacts } from "./Pages/Contacts/Contacts";
+import { Main } from "./Pages/Main/Main";
 import { observer } from "mobx-react-lite";
-import { Products } from "./components/Products";
-import { Cart } from "./Pages/Cart";
-import { OneProductPage } from "./Pages/OneProductPage";
+import { Products } from "./Pages/Products/Products";
+import { Cart } from "./Pages/Cart/Cart";
+import { OneProductPage } from "./Pages/OneProductPage/OneProductPage";
 import logo from "./components/images/footerLogo.PNG";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import CallIcon from "@mui/icons-material/Call";
@@ -16,7 +16,7 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import { Input } from "antd";
 import { useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
-import { SearchedProducts } from "./components/SearchedProducts";
+import { SearchedProducts } from "./components/SearchedProducts/SearchedProducts";
 import { store } from "./Stores/AppStore";
 
 const App = observer(() => {
@@ -32,19 +32,17 @@ const App = observer(() => {
         }
     };
 
+    const onChangeSearch = (e) => {
+        setSearchInputValue(e.target.value);
+    };
+
     const findObj = () => {
         const div = document.getElementById("root");
-        // console.log(isMenuOpened);
         div.addEventListener("click", function eventHandler(event) {
             const target = event.target;
-            console.log(target.className);
-
             if (isMenuOpened === false) {
                 if (target.className !== "menuContainer") {
-                    console.log(Boolean(target.className === "menuContainer"));
                     div.removeEventListener("click", eventHandler);
-                    // console.log("есть");
-
                     setIsMenuOpened(false);
                 }
             }
@@ -57,10 +55,6 @@ const App = observer(() => {
             clearTimeout(timeout);
             timeout = setTimeout(() => func(args), delay);
         };
-
-    const onChangeSearch = (e) => {
-        setSearchInputValue(e.target.value);
-    };
 
     return (
         <div className="container">
@@ -97,13 +91,10 @@ const App = observer(() => {
                     </div>
                     <div className="searchInput">
                         <Input
-                            // className="headerSearch"
                             placeholder="Поиск по товарам"
                             allowClear
-                            // size="large"
                             onChange={debounce(onChangeSearch, 400)}
                             onClick={onSearchClick}
-                            // on={onSearchClick}
                         />
                         {isMenuOpened && (
                             <div className="headerSearchMenu">

@@ -1,12 +1,11 @@
-// import { useParams } from "react-router-dom";
-import { store } from "../Stores/AppStore";
-import { OneProduct } from "../components/OneProduct";
+import { store } from "../../Stores/AppStore";
 import { useEffect, useState } from "react";
 import { Checkbox } from "@mui/material";
 import Slider from "@mui/material/Slider";
 import { observer } from "mobx-react-lite";
 import CircularProgress from "@mui/material/CircularProgress";
-import { ChooseProductList } from "./ChooseProductList";
+import { ChooseProductList } from "../../components/ChooseProductList/ChooseProductList";
+import "./Products.css";
 
 export const Products = observer(() => {
     const onSliderChange = (event, newValue) => {
@@ -24,6 +23,13 @@ export const Products = observer(() => {
             }, 500);
         }
     };
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: "smooth",
+        });
+    }, []);
 
     return (
         store.ApiData && (
@@ -141,7 +147,6 @@ export const Products = observer(() => {
                                 if (store.isChecked.name === false) {
                                     store.setIsChecked("name", true);
                                     store.filterList();
-
                                     store.sortingByName();
                                 } else if (store.isChecked.name === true) {
                                     store.setIsChecked("name", false);
@@ -158,7 +163,6 @@ export const Products = observer(() => {
                                 loadingHandler();
                                 if (store.isChecked.rating === false) {
                                     store.setIsChecked("rating", true);
-
                                     store.sortingByRating();
                                 } else if (store.isChecked.rating === true) {
                                     store.setIsChecked("rating", false);

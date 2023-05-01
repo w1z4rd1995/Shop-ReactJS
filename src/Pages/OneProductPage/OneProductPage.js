@@ -1,9 +1,10 @@
 import { useParams } from "react-router-dom";
-import { store } from "../Stores/AppStore";
+import { store } from "../../Stores/AppStore";
 import Rating from "@mui/material/Rating";
 import ReactImageMagnify from "react-image-magnify";
 import { NavLink } from "react-router-dom";
 import { observer } from "mobx-react-lite";
+import "./OneProductPage.css";
 
 export const OneProductPage = observer(() => {
     const params = useParams();
@@ -25,7 +26,6 @@ export const OneProductPage = observer(() => {
                                             // isFluidWidth: true,
                                             width: 500,
                                             height: 500,
-
                                             src: item.image,
                                         },
                                         largeImage: {
@@ -80,7 +80,6 @@ export const OneProductPage = observer(() => {
                                                     Добавлено
                                                 </NavLink>
                                             </div>
-                                            <div></div>
                                         </>
                                     )}
                                 </div>

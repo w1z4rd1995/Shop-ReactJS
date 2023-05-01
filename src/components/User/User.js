@@ -1,5 +1,5 @@
-import { store } from "../Stores/AppStore";
 import { observer } from "mobx-react-lite";
+import "./User.css";
 
 export const User = observer((props) => {
     return (

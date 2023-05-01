@@ -1,5 +1,6 @@
 import { observer } from "mobx-react-lite";
 import { Formik, Field, Form } from "formik";
+import "./FeedBack.css";
 
 export const FeedBack = observer((props) => {
     return (

@@ -1,7 +1,8 @@
 import { observer } from "mobx-react-lite";
-import { store } from "../Stores/AppStore";
+import { store } from "../../Stores/AppStore";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import "./SearchedProducts.css";
 
 export const SearchedProducts = observer((props) => {
     const navigate = useNavigate();

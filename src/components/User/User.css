@@ -1,0 +1,20 @@
+.userContainer {
+    min-width: 170px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.userAvatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.userAvatar > img {
+    object-fit: contain;
+    border-radius: 64px;
+}
+.userName {
+    padding-top: 15px;
+}
