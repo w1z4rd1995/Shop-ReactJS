@@ -1,4 +1,4 @@
-import { store } from "../../Stores/AppStore";
+import { store } from "../../stores/AppStore";
 import { useEffect, useState } from "react";
 import { Checkbox } from "@mui/material";
 import Slider from "@mui/material/Slider";
@@ -9,6 +9,11 @@ import "./Products.css";
 
 export const Products = observer(() => {
     const onSliderChange = (event, newValue) => {
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: "smooth",
+        });
         store.setSliderValue(newValue);
         loadingHandler();
     };
@@ -99,6 +104,12 @@ export const Products = observer(() => {
                                                             store.clearFilterProducts();
                                                             store.filterList();
                                                             store.chooseSorting();
+                                                            window.scrollTo({
+                                                                top: 0,
+                                                                left: 0,
+                                                                behavior:
+                                                                    "smooth",
+                                                            });
                                                         } else if (
                                                             item.isSelected ===
                                                             true
@@ -109,6 +120,12 @@ export const Products = observer(() => {
                                                             store.setFilterProducts();
                                                             store.filterList();
                                                             store.chooseSorting();
+                                                            window.scrollTo({
+                                                                top: 0,
+                                                                left: 0,
+                                                                behavior:
+                                                                    "smooth",
+                                                            });
                                                         }
                                                     }}
                                                 />

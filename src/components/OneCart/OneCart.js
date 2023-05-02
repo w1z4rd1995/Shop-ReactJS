@@ -1,7 +1,6 @@
 import { observer } from "mobx-react-lite";
 import Rating from "@mui/material/Rating";
-import { store } from "../../Stores/AppStore";
-import { useState } from "react";
+import { store } from "../../stores/AppStore";
 import { ItemCounter } from "../ItemCounter/ItemCounter";
 import "./OneCart.css";
 

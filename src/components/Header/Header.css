@@ -1,0 +1,138 @@
+.header {
+    background: black;
+    grid-area: header1;
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-right: 30px;
+
+    color: white;
+}
+.header > div > div > a,
+.header > div > div > div > a {
+    font-size: 1.5rem;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: white;
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    transition: 200ms;
+}
+
+.header > div > div > a:hover,
+.header > div > div > div > a:hover {
+    /* text-decoration: underline; */
+    background-color: white;
+    color: black;
+}
+.header > div > div > a.active,
+.header > div > div > div > a.active {
+    background-color: white;
+    color: black;
+    cursor: default;
+    font-weight: 500;
+}
+.headerLogoStyle {
+    object-fit: contain;
+    width: 250px;
+    height: 150px;
+}
+.headerLinks {
+    padding-top: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.headerLinks > div:hover {
+}
+.headerLinks > div {
+    height: 100%;
+}
+.headerLinks {
+    display: flex;
+    gap: 20px;
+}
+
+.cartStyle {
+    position: relative;
+}
+
+.cartCount {
+    margin-left: 118px;
+    margin-top: -46px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: coral;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    color: white;
+    border-radius: 15px;
+    font-size: 1.3rem;
+    font-weight: 400;
+    transition: all 1s;
+}
+.headerSearchStyle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.searchInput,
+.searchInput > span {
+    width: 300px;
+    height: 50px;
+    font-size: 1.2rem;
+}
+.searchInput {
+    position: relative;
+}
+
+.headerSearchMenu {
+    border-radius: 6px;
+    overflow-y: auto;
+    margin-top: 10px;
+    background-color: white;
+    box-shadow: 0 0 10px 2px rgba(221, 221, 221, 1);
+    width: 100%;
+    height: 500px;
+    position: absolute;
+
+    color: black;
+    z-index: 1;
+}
+
+.headerInfo {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-around;
+    align-items: center;
+}
+.headerInfo > div:hover {
+    cursor: default;
+}
+.headerPhone {
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+.headerPhone,
+.headerMail > div > svg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.headerMail {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}

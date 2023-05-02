@@ -1,5 +1,5 @@
 import { observer } from "mobx-react-lite";
-import { store } from "../../Stores/AppStore";
+import { store } from "../../stores/AppStore";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Carousel } from "antd";
@@ -33,7 +33,7 @@ export const Main = observer(() => {
     }, [store.minPrice]);
 
     return (
-        store.allImages && (
+        store.ApiData && (
             <div className="imageSliderContainer">
                 <Carousel autoplay autoplaySpeed={2000} effect="fade">
                     {store.ApiData.map((item, i) => (

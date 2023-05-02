@@ -1,4 +1,4 @@
-import { store } from "../../Stores/AppStore";
+import { store } from "../../stores/AppStore";
 import { OneProduct } from "../OneProduct/OneProduct";
 import { observer } from "mobx-react-lite";
 import "./ChooseProductList.css";
@@ -17,7 +17,7 @@ export const ChooseProductList = observer(() => {
             ) {
                 count += 1;
                 return (
-                    <div key={item.id}>
+                    <div className="oneProduct" key={item.id}>
                         <OneProduct Item={item} />
                     </div>
                 );
@@ -41,7 +41,7 @@ export const ChooseProductList = observer(() => {
             ) {
                 count += 1;
                 return (
-                    <div key={item.id}>
+                    <div className="oneProduct" key={item.id}>
                         <OneProduct Item={item} />
                     </div>
                 );

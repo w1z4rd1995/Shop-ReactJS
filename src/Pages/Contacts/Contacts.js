@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { store } from "../../Stores/AppStore";
+import { store } from "../../stores/AppStore";
 import { observer } from "mobx-react-lite";
 import { User } from "../../components/User/User";
 

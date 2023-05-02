@@ -35,7 +35,7 @@ export class AppStore {
     }
 
     ApiData = [];
-    allImages = [];
+
     Categories = [];
     categoryFilter = [];
     sortingData = [];

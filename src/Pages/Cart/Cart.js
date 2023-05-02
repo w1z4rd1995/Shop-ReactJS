@@ -1,4 +1,4 @@
-import { store } from "../../Stores/AppStore";
+import { store } from "../../stores/AppStore";
 import { observer } from "mobx-react-lite";
 import { OneCart } from "../../components/OneCart/OneCart";
 import emptyCart from "../../components/images/EmptyCart1.png";

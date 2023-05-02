@@ -6,3 +6,36 @@
     color: grey;
     font-size: 1.2rem;
 }
+
+.oneProduct {
+    /* max-width: 300px; */
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr 1fr 1fr 1fr;
+
+    border-radius: 30px;
+    font-size: 16px;
+    line-height: 23px;
+    font-family: sans-serif;
+    background-color: white;
+
+    align-self: center;
+    justify-content: center;
+    /* padding-bottom: 30px; */
+    box-shadow: 0 0 10px 2px rgba(221, 221, 221, 1);
+    transition: 0.15s;
+}
+.oneProduct > div {
+    align-self: center;
+    justify-self: center;
+}
+.oneProduct:hover {
+    transition: 0.15s;
+    transform: scale(1.1);
+}
+.oneProduct > div > img {
+    width: 170px;
+    height: 170px;
+    object-fit: contain;
+}

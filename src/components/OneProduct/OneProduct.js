@@ -1,12 +1,12 @@
 import { observer } from "mobx-react-lite";
 import Rating from "@mui/material/Rating";
-import { store } from "../../Stores/AppStore";
+import { store } from "../../stores/AppStore";
 import { NavLink } from "react-router-dom";
 import "./OneProduct.css";
 
 export const OneProduct = observer((props) => {
     return (
-        <div className="oneProduct">
+        <>
             <div className="imageStyle">
                 <img src={props.Item.image} />
             </div>
@@ -42,6 +42,6 @@ export const OneProduct = observer((props) => {
                     </div>
                 )}
             </div>
-        </div>
+        </>
     );
 });
