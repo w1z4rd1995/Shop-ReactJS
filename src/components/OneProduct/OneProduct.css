@@ -21,6 +21,7 @@
     text-decoration: none;
     color: black;
 }
+
 .titleStyle > a:hover {
     color: coral;
 }
@@ -33,9 +34,11 @@
     font-size: 1.4rem;
     font-weight: bold;
 }
+
 .addButtonStyle {
     padding-bottom: 20px;
 }
+
 .addButtonStyle > .cartLink > a {
     text-decoration: none;
     width: 130px;
@@ -52,11 +55,13 @@
 .addButtonStyle > .cartLink > a:hover {
     background-color: green;
 }
+
 .inputButtonStyle:hover {
     background-color: rgb(250, 151, 81);
     box-shadow: rgb(112, 103, 81);
     cursor: pointer;
 }
+
 .inputButtonStyle {
     z-index: 5;
     width: 130px;

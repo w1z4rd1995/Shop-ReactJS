@@ -55,8 +55,8 @@ export const Contacts = observer(() => {
                     <div>
                         <h2>Адрес</h2>
                     </div>
-                    <div className="footerContactsInfo">
-                        <div className="footerLocation">
+                    <div className="contactsInfo">
+                        <div className="contactsLocation">
                             <div>
                                 <LocationOnIcon />
                             </div>
@@ -64,13 +64,13 @@ export const Contacts = observer(() => {
                                 123456, Россия, г. Москва, ул. Степанова, д. 100{" "}
                             </div>
                         </div>
-                        <div className="footerPhone">
+                        <div className="contactsPhone">
                             <div>
                                 <CallIcon />
                             </div>
                             <div>+7(495)4958800</div>
                         </div>
-                        <div className="footerMail">
+                        <div className="contactsMail">
                             <div>
                                 <MailOutlineIcon />
                             </div>

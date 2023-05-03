@@ -1,22 +1,17 @@
 .cartContainer {
     display: grid;
-
     grid-template-areas:
         " cartProducts cartProducts totalPrice"
-        " cartProducts cartProducts ."
-        " cartProducts cartProducts ."
         " cartProducts cartProducts .";
-
     grid-row-gap: 20px;
-    grid-column-gap: 30px;
+    grid-column-gap: 50px;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: auto;
-    /* padding-left: 30px; */
-    padding-right: 100px;
+    min-height: 400px;
 }
+
 .totalPrice {
     grid-area: totalPrice;
-    /* border: solid 1px black; */
     display: flex;
     flex-direction: column;
     background-color: white;
@@ -25,16 +20,17 @@
     height: 250px;
     border-radius: 20px;
     box-shadow: 0 0 10px 2px rgba(221, 221, 221, 1);
-
     position: sticky;
     top: 30px;
 }
+
 .cartQuantity {
     font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
         "Lucida Sans", Arial, sans-serif;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: 700;
 }
+
 .buyButton {
     width: 250px;
     height: 60px;
@@ -52,13 +48,12 @@
     box-shadow: rgb(112, 103, 81);
     cursor: pointer;
 }
+
 .cartProducts {
     grid-area: cartProducts;
-    /* border: solid 1px black; */
     display: grid;
     grid-auto-rows: auto;
     grid-row-gap: 30px;
-    /* background-color: rgba(238, 238, 238, 0.432); */
 }
 
 .emptyCart > div {
@@ -93,6 +88,7 @@
 .emptyCart > div > a:hover {
     background-color: chocolate;
 }
+
 .emptyCart > div > a:foc {
     top: 10px;
 }

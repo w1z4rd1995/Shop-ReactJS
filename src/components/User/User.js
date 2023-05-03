@@ -11,7 +11,6 @@ export const User = observer((props) => {
                 {props.user.first_name} {props.user.last_name}{" "}
             </div>
             <div className="userMail">{props.user.email}</div>
-            <div></div>
         </div>
     );
 });

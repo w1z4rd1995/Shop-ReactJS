@@ -1,64 +1,6 @@
 .container {
     display: flex;
     flex-direction: column;
-    /* flex-wrap: wrap; */
     gap: 20px;
     background-color: rgba(238, 238, 238, 0.507);
-}
-
-:where(.css-dev-only-do-not-override-ph9edi).ant-carousel
-    .slick-dots
-    li
-    button {
-    background: black;
-    height: 5px;
-    border-radius: 3px;
-    /* width: auto; */
-}
-
-:where(.css-dev-only-do-not-override-ph9edi).ant-carousel
-    .slick-dots
-    li.slick-active
-    button {
-    background: coral;
-}
-
-.css-187mznn-MuiSlider-root {
-    /* display: flex; */
-    color: coral !important;
-}
-
-.css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.Mui-checked,
-.css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.MuiCheckbox-indeterminate {
-    color: coral !important;
-}
-
-.css-18lrjg1-MuiCircularProgress-root {
-    color: coral !important;
-}
-
-.css-tzssek-MuiSvgIcon-root {
-    fill: white !important;
-}
-
-:where(.css-dev-only-do-not-override-ph9edi).ant-input-affix-wrapper
-    .ant-input-clear-icon {
-    font-size: 20px !important;
-}
-
-:where(.css-dev-only-do-not-override-ph9edi).ant-input-affix-wrapper:focus,
-:where(.css-dev-only-do-not-override-ph9edi).ant-input-affix-wrapper-focused {
-    border: none !important;
-}
-
-:where(.css-dev-only-do-not-override-ph9edi).ant-input-affix-wrapper:not(
-        .ant-input-affix-wrapper-disabled
-    ):hover {
-    border: none !important;
-}
-:where(.css-dev-only-do-not-override-ph9edi).ant-input-affix-wrapper {
-    border: none !important;
-}
-.css-1m9pwf3 {
-    z-index: 0 !important;
 }

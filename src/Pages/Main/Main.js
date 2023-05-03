@@ -35,7 +35,12 @@ export const Main = observer(() => {
     return (
         store.ApiData && (
             <div className="imageSliderContainer">
-                <Carousel autoplay autoplaySpeed={2000} effect="fade">
+                <Carousel
+                    autoplay
+                    autoplaySpeed={2000}
+                    effect="fade"
+                    dotPosition="bottom"
+                >
                     {store.ApiData.map((item, i) => (
                         <div className="imageContainer" key={i}>
                             <div

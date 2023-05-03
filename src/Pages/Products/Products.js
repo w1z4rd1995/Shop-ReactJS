@@ -55,6 +55,7 @@ export const Products = observer(() => {
                                 <div className="sliderStyle">
                                     {store.minPrice && store.maxPrice && (
                                         <Slider
+                                            style={{ color: "orange" }}
                                             key={`slider-${store.sliderValue}`}
                                             min={store.minPrice}
                                             max={store.maxPrice}
@@ -91,6 +92,12 @@ export const Products = observer(() => {
                                         return (
                                             <div key={i}>
                                                 <Checkbox
+                                                    sx={{
+                                                        color: "orange",
+                                                        "&.Mui-checked": {
+                                                            color: "orange",
+                                                        },
+                                                    }}
                                                     checked={item.isSelected}
                                                     onChange={() => {
                                                         loadingHandler();
@@ -142,6 +149,12 @@ export const Products = observer(() => {
                     Сортировать по:
                     <div>
                         <Checkbox
+                            sx={{
+                                color: "orange",
+                                "&.Mui-checked": {
+                                    color: "orange",
+                                },
+                            }}
                             checked={store.isChecked.price}
                             onChange={() => {
                                 loadingHandler();
@@ -158,6 +171,12 @@ export const Products = observer(() => {
                     </div>
                     <div>
                         <Checkbox
+                            sx={{
+                                color: "orange",
+                                "&.Mui-checked": {
+                                    color: "orange",
+                                },
+                            }}
                             checked={store.isChecked.name}
                             onChange={() => {
                                 loadingHandler();
@@ -175,6 +194,12 @@ export const Products = observer(() => {
                     </div>
                     <div>
                         <Checkbox
+                            sx={{
+                                color: "orange",
+                                "&.Mui-checked": {
+                                    color: "orange",
+                                },
+                            }}
                             checked={store.isChecked.rating}
                             onChange={() => {
                                 loadingHandler();
@@ -198,7 +223,11 @@ export const Products = observer(() => {
                     ) : (
                         <div className="loadingStyle">
                             <CircularProgress
-                                style={{ width: 70, height: 70 }}
+                                style={{
+                                    width: 70,
+                                    height: 70,
+                                    color: "orange",
+                                }}
                             />
                         </div>
                     )}

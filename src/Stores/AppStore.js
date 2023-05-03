@@ -75,7 +75,7 @@ export class AppStore {
                     (item.isCart = false),
                     (item.cartQuantity = 1)
                 )),
-                this.ApiData.push(this.oneNewItem)
+                this.createData(this.oneNewItem)
             )
         );
 
@@ -88,6 +88,9 @@ export class AppStore {
 
         store.findMinMaxPrice();
     };
+    createData(item) {
+        this.ApiData.push(item);
+    }
 
     findCartCount() {
         let count = 0;

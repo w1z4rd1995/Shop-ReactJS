@@ -46,6 +46,7 @@ export const Header = observer(() => {
             clearTimeout(timeout);
             timeout = setTimeout(() => func(args), delay);
         };
+
     return (
         <div className="header">
             <div className="headerLogo">

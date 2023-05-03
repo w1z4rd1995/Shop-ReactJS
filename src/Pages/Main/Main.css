@@ -1,13 +1,18 @@
 .imageSliderContainer {
     width: 100%;
     height: 750px;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(71, 73, 94);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-self: center;
     border-radius: 20px;
 }
+
+.slick-dots > li > button {
+    opacity: 1;
+}
+
 .imageContainer {
     width: 750px;
     height: 700px;
@@ -15,36 +20,35 @@
     justify-content: center;
     align-items: center;
 }
+
 .imageContainer:hover {
     cursor: pointer;
 }
+
 .hoverImage {
     position: relative;
     width: 100%;
     height: auto;
 }
+
 .hoverImage:hover {
     transition: 0.5s;
 }
+
 .imageSlider {
     position: relative;
-    /* display: flex; */
     object-fit: contain;
     width: 100%;
     height: 600px;
-    align-self: center;
-    align-items: center;
-    /* padding-left: 20%; */
     padding-top: 20px;
 }
+
 .imageSlider:hover {
     transition: 0.3s;
     opacity: 0.7;
 }
+
 .imageDesc {
-    opacity: 0.8;
-    /* padding-left: 20px; */
-    /* padding-right: 20px; */
     animation-name: move;
     animation-direction: alternate;
     animation-duration: 0.3s;
@@ -55,19 +59,19 @@
     font-size: 1.3rem;
     transition: all 0.8s;
     text-align: center;
-    background-color: black;
-    color: coral;
+    background-color: white;
+    color: black;
     position: absolute;
     width: 100%;
     height: auto;
     min-height: 130px;
     bottom: 0;
-    /* white-space: normal; */
     display: flex;
     justify-content: center;
     align-items: center;
     align-self: center;
 }
+
 @keyframes move {
     from {
         bottom: -100px;

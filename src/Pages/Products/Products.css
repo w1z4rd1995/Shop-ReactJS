@@ -5,9 +5,8 @@
         "filter productsList productsList"
         ". productsList productsList"
         ". productsList productsList";
-
-    grid-row-gap: 40px;
-    grid-column-gap: 30px;
+    grid-row-gap: 30px;
+    grid-column-gap: 50px;
     grid-template-columns: 20% 1fr 1fr;
     grid-template-rows: 50px auto 1fr;
 }
@@ -20,16 +19,19 @@
     box-shadow: 0 0 10px 2px rgba(221, 221, 221, 1);
     top: 30px;
 }
+
 .filtersHeader {
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 .allFilters {
     display: flex;
     flex-direction: column;
     gap: 30px;
 }
+
 .priceHeader {
     display: flex;
     justify-content: center;
@@ -42,6 +44,7 @@
     flex-direction: row;
     padding: 0;
 }
+
 .sliderStyle {
     padding-bottom: 10px;
     padding-right: 50px;
@@ -54,6 +57,7 @@
     align-items: center;
     color: grey;
 }
+
 .categoryHeader {
     display: flex;
     justify-content: center;
@@ -63,11 +67,11 @@
 .filtersCategoryItem {
     display: flex;
     justify-content: center;
-    /* align-items: center; */
     flex-direction: column;
     margin-bottom: 50px;
     padding-left: 30px;
 }
+
 .sorting {
     grid-area: sort;
     display: flex;
@@ -82,6 +86,7 @@
     border-radius: 30px;
     box-shadow: 0 0 10px 2px rgba(221, 221, 221, 1);
 }
+
 .sorting > div {
     display: flex;
     flex-direction: row;
@@ -92,14 +97,15 @@
 .productsList {
     grid-area: productsList;
 }
+
 .products {
     position: relative;
     width: auto;
     min-height: 600px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 225px));
-    grid-column-gap: 4%;
-    grid-row-gap: 50px;
+    grid-column-gap: 48px;
+    grid-row-gap: 48px;
     grid-auto-rows: 400px;
     grid-area: products;
 }
