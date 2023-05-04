@@ -53,6 +53,8 @@ export class AppStore {
     minPrice;
     maxPrice;
     sliderValue = [];
+    tempSliderValue = [];
+    defaultSliderValue = [];
     visibleItems;
     invisibleItems;
 
@@ -87,6 +89,7 @@ export class AppStore {
         });
 
         store.findMinMaxPrice();
+        store.setSliderValue([store.minPrice, store.maxPrice]);
     };
     createData(item) {
         this.ApiData.push(item);
@@ -120,7 +123,12 @@ export class AppStore {
     }
 
     setSliderValue(newValue) {
-        this.sliderValue = newValue;
+        if (
+            newValue[0] === this.defaultSliderValue[0] &&
+            newValue[1] === this.defaultSliderValue[1]
+        ) {
+            this.sliderValue = [this.minPrice, this.maxPrice];
+        } else this.sliderValue = newValue;
     }
 
     fetchDataUsers = async () => {
@@ -219,6 +227,8 @@ export class AppStore {
         );
         this.minPrice = minPriceItem.price;
         this.maxPrice = maxPriceItem.price;
+        this.defaultSliderValue = [this.minPrice, this.maxPrice];
+        console.log(this.defaultSliderValue);
     }
 
     sortingByPrice() {

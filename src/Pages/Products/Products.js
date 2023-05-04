@@ -53,23 +53,13 @@ export const Products = observer(() => {
                                 <div className="inputStyle"></div>
 
                                 <div className="sliderStyle">
-                                    {store.minPrice && store.maxPrice && (
+                                    {store.sliderValue && (
                                         <Slider
                                             style={{ color: "orange" }}
                                             key={`slider-${store.sliderValue}`}
                                             min={store.minPrice}
                                             max={store.maxPrice}
-                                            defaultValue={
-                                                store.sliderValue[0] ===
-                                                    store.minPrice &&
-                                                store.sliderValue[1] ===
-                                                    store.maxPrice
-                                                    ? [
-                                                          store.minPrice,
-                                                          store.maxPrice,
-                                                      ]
-                                                    : store.sliderValue
-                                            }
+                                            defaultValue={store.sliderValue}
                                             valueLabelDisplay="auto"
                                             disableSwap
                                             step={5}

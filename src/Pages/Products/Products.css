@@ -9,6 +9,7 @@
     grid-column-gap: 50px;
     grid-template-columns: 20% 1fr 1fr;
     grid-template-rows: 50px auto 1fr;
+    height: 100%;
 }
 
 .filters {
@@ -101,11 +102,10 @@
 .products {
     position: relative;
     width: auto;
-    min-height: 600px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 225px));
-    grid-column-gap: 48px;
-    grid-row-gap: 48px;
+    grid-column-gap: 32px;
+    grid-row-gap: 32px;
     grid-auto-rows: 400px;
     grid-area: products;
 }

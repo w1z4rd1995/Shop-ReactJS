@@ -1,20 +1,18 @@
 .footer {
-    grid-area: footer1;
-    margin-top: 20px;
     color: white;
     width: 100%;
-    height: 400px;
-    bottom: 0px;
     background-color: black;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    flex: 0 0 auto;
 }
 
 .footerContent {
     width: 90%;
-    height: 90%;
+    padding-top: 30px;
+    padding-bottom: 30px;
     color: white;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 2fr;
@@ -28,14 +26,12 @@
 
 .footerLogo {
     grid-area: footerLogo;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .logoStyle {
     object-fit: contain;
-    width: 100%;
+    width: 80%;
+    height: auto;
 }
 
 .footerPages {

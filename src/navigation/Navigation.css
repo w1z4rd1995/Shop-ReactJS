@@ -1,4 +1,5 @@
 .content {
-    margin-left: 5%;
-    margin-right: 5%;
+    flex: 1 0 auto;
+    background-color: rgba(238, 238, 238, 0.507);
+    padding: 50px;
 }

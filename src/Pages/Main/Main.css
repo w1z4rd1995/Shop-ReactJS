@@ -1,7 +1,7 @@
 .imageSliderContainer {
     width: 100%;
     height: 750px;
-    background-color: rgb(71, 73, 94);
+    background-color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -9,8 +9,21 @@
     border-radius: 20px;
 }
 
-.slick-dots > li > button {
-    opacity: 1;
+.slick-dots li {
+    background: black;
+    width: 20px;
+}
+.slick-dots li button {
+    width: 10px;
+    height: 10px;
+    background: green;
+    /* border-radius: 100%; */
+}
+.ant-carousel .slick-dots li.slick-active button {
+    width: 25px;
+    height: 5px;
+
+    background: coral;
 }
 
 .imageContainer {
@@ -59,8 +72,8 @@
     font-size: 1.3rem;
     transition: all 0.8s;
     text-align: center;
-    background-color: white;
-    color: black;
+    background-color: black;
+    color: coral;
     position: absolute;
     width: 100%;
     height: auto;

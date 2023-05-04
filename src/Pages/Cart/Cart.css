@@ -6,8 +6,6 @@
     grid-row-gap: 20px;
     grid-column-gap: 50px;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: auto;
-    min-height: 400px;
 }
 
 .totalPrice {
@@ -52,7 +50,7 @@
 .cartProducts {
     grid-area: cartProducts;
     display: grid;
-    grid-auto-rows: auto;
+    /* grid-auto-rows: auto; */
     grid-row-gap: 30px;
 }
 

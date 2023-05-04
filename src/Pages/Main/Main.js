@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { Carousel } from "antd";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "./Main.css";
+import { styled } from "@mui/system";
 
 export const Main = observer(() => {
     const navigate = useNavigate();
@@ -29,8 +30,7 @@ export const Main = observer(() => {
             store.fetchData();
             store.setIsReady(true);
         }
-        store.setSliderValue([store.minPrice, store.maxPrice]);
-    }, [store.minPrice]);
+    }, []);
 
     return (
         store.ApiData && (
