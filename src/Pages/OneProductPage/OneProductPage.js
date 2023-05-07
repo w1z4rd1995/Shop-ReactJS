@@ -10,6 +10,7 @@ import { useEffect } from "react";
 export const OneProductPage = observer(() => {
     const params = useParams();
     const productId = Number(params.productId);
+
     useEffect(() => {
         window.scrollTo({
             top: 0,
@@ -17,6 +18,7 @@ export const OneProductPage = observer(() => {
             behavior: "smooth",
         });
     }, []);
+
     return (
         <div>
             {store.ApiData.map((item) => {

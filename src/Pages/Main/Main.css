@@ -13,16 +13,16 @@
     background: black;
     width: 20px;
 }
+
 .slick-dots li button {
     width: 10px;
     height: 10px;
     background: green;
-    /* border-radius: 100%; */
 }
+
 .ant-carousel .slick-dots li.slick-active button {
     width: 25px;
     height: 5px;
-
     background: coral;
 }
 
@@ -70,9 +70,8 @@
     font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
         "Lucida Sans", Arial, sans-serif;
     font-size: 1.3rem;
-    transition: all 0.8s;
     text-align: center;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.6);
     color: coral;
     position: absolute;
     width: 100%;
@@ -87,11 +86,13 @@
 
 @keyframes move {
     from {
+        background-color: white;
         bottom: -100px;
         opacity: 0;
     }
     to {
+        background-color: black;
         bottom: 0;
-        opacity: 0.8;
+        opacity: 0.6;
     }
 }

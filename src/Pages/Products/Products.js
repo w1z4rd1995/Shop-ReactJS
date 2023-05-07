@@ -8,6 +8,8 @@ import { ChooseProductList } from "../../components/ChooseProductList/ChooseProd
 import "./Products.css";
 
 export const Products = observer(() => {
+    const [isLoading, setIsLoading] = useState(false);
+
     const onSliderChange = (event, newValue) => {
         window.scrollTo({
             top: 0,
@@ -18,8 +20,6 @@ export const Products = observer(() => {
         loadingHandler();
     };
 
-    const [isLoading, setIsLoading] = useState(false);
-
     const loadingHandler = () => {
         if (isLoading === false) {
             setIsLoading(true);
@@ -28,6 +28,7 @@ export const Products = observer(() => {
             }, 500);
         }
     };
+
     useEffect(() => {
         window.scrollTo({
             top: 0,
@@ -44,14 +45,12 @@ export const Products = observer(() => {
                         <div className="filtersHeader">
                             <h2>Фильтры</h2>{" "}
                         </div>
-
                         <div className="allFilters">
                             <div>
                                 <div className="priceHeader">
                                     <h3>Цена</h3>
                                 </div>
                                 <div className="inputStyle"></div>
-
                                 <div className="sliderStyle">
                                     {store.sliderValue && (
                                         <Slider
@@ -72,7 +71,6 @@ export const Products = observer(() => {
                                     {store.sliderValue[1]} $
                                 </div>
                             </div>
-
                             <div>
                                 <div className="categoryHeader">
                                     <h3>Категория</h3>

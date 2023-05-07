@@ -6,9 +6,11 @@ import "./SearchedProducts.css";
 
 export const SearchedProducts = observer((props) => {
     const navigate = useNavigate();
+
     const searchedItems = store.ApiData.filter((item) =>
         item.title?.toLowerCase().includes(props.searchValue)
     );
+
     return (
         <div className="menuContainer">
             {searchedItems.length !== 0 ? (

@@ -35,7 +35,6 @@ export class AppStore {
     }
 
     ApiData = [];
-
     Categories = [];
     categoryFilter = [];
     sortingData = [];
@@ -43,27 +42,21 @@ export class AppStore {
     currentCategory = [];
     cartProduct = [];
     users = [];
-    oneNewItem = {};
-
-    cartCount = 0;
-
-    IsReady = false;
-    isChecked = { price: false, name: false, rating: false };
     currentSorting = [];
-    minPrice;
-    maxPrice;
     sliderValue = [];
     tempSliderValue = [];
     defaultSliderValue = [];
-    visibleItems;
-    invisibleItems;
+    oneNewItem = {};
+    cartCount = 0;
+    IsReady = false;
+    isChecked = { price: false, name: false, rating: false };
+    minPrice;
+    maxPrice;
 
     fetchData = async () => {
         const api_url = "https://fakestoreapi.com/products";
-
         const response = await axios.get(api_url);
         const tempApiData = response.data;
-
         tempApiData.map(
             (item) => (
                 (this.oneNewItem = new OneProductDescription(
@@ -80,17 +73,16 @@ export class AppStore {
                 this.createData(this.oneNewItem)
             )
         );
-
         const temp = this.ApiData.map((item) => item.category);
         this.allImages = this.ApiData.map((item) => item.image);
         this.Categories = [...new Set(temp)];
         this.categoryFilter = this.Categories.map((category) => {
             return { category, isSelected: false };
         });
-
         store.findMinMaxPrice();
         store.setSliderValue([store.minPrice, store.maxPrice]);
     };
+
     createData(item) {
         this.ApiData.push(item);
     }
@@ -104,15 +96,6 @@ export class AppStore {
             this.cartCount = count;
         });
     }
-    setVisibleItems = (value) => {
-        this.visibleItems = 0;
-
-        if (value === "visible") {
-            this.visibleItems = this.visibleItems + 1;
-        }
-
-        console.log(this.visibleItems);
-    };
 
     setItemQuantity(id) {
         store.ApiData.map((item) => {
@@ -152,9 +135,11 @@ export class AppStore {
             });
         }
     }
+
     setFilterProducts() {
         this.filterProducts = [...this.ApiData];
     }
+
     clearFilterProducts() {
         this.filterProducts = [];
     }
@@ -163,7 +148,6 @@ export class AppStore {
         this.currentCategory = this.categoryFilter.filter(
             (item) => item.isSelected === true
         );
-
         let tempFilterProduct = [];
         this.currentCategory.map((item) => {
             this.ApiData.map((product) => {
@@ -177,6 +161,7 @@ export class AppStore {
             });
         });
     }
+
     setIsChecked(sortingName, value) {
         this.currentSorting = [];
         if (sortingName === "price" && value === true) {
@@ -215,9 +200,11 @@ export class AppStore {
             this.sortingByRating();
         }
     }
+
     setIsReady(value) {
         store.IsReady = value;
     }
+
     findMinMaxPrice() {
         const minPriceItem = this.ApiData.reduce((first, second) =>
             first.price > second.price ? second : first
@@ -228,7 +215,6 @@ export class AppStore {
         this.minPrice = minPriceItem.price;
         this.maxPrice = maxPriceItem.price;
         this.defaultSliderValue = [this.minPrice, this.maxPrice];
-        console.log(this.defaultSliderValue);
     }
 
     sortingByPrice() {
@@ -314,5 +300,6 @@ export class AppStore {
         }
     }
 }
+
 export const store = new AppStore();
 export const StoreContext = createContext(store);
