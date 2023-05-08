@@ -18,6 +18,7 @@ export const Cart = observer(() => {
             totalPrice = totalPrice + item.totalPrice;
         }
     });
+
     useEffect(() => {
         window.scrollTo({
             top: 0,
